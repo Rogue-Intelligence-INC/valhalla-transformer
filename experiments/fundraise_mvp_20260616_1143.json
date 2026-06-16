@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "experiment": "fundraise_mvp",
+    "timestamp": "20260616_1143",
+    "n": 200,
+    "corpus_tier": "large",
+    "corpus_lines": 143,
+    "json_path": "/home/jouly/AI/Valhalla/reports/body_experiments/fundraise_mvp_20260616_1143.json",
+    "bodies": [
+      "hub",
+      "tile",
+      "stemcell",
+      "triad"
+    ]
+  },
+  "tier_b": {
+    "baseline": {
+      "body": "triad",
+      "summary": {
+        "acc": 0.245,
+        "correct": 49,
+        "n": 200
+      },
+      "by_score_type": {
+        "mcq": {
+          "correct": 11,
+          "total": 64,
+          "acc": 0.1719
+        },
+        "numeric": {
+          "correct": 36,
+          "total": 59,
+          "acc": 0.6102
+        },
+        "open": {
+          "correct": 2,
+          "total": 77,
+          "acc": 0.026
+        }
+      }
+    },
+    "hub_c1": {
+      "body": "hub",
+      "summary": {
+        "acc": 0.235,
+        "correct": 47,
+        "n": 200
+      },
+      "by_score_type": {
+        "mcq": {
+          "correct": 9,
+          "total": 64,
+          "acc": 0.1406
+        },
+        "numeric": {
+          "correct": 36,
+          "total": 59,
+          "acc": 0.6102
+        },
+        "open": {
+          "correct": 2,
+          "total": 77,
+          "acc": 0.026
+        }
+      }
+    },
+    "tile_c1": {
+      "body": "tile",
+      "summary": {
+        "acc": 0.235,
+        "correct": 47,
+        "n": 200
+      },
+      "by_score_type": {
+        "mcq": {
+          "correct": 9,
+          "total": 64,
+          "acc": 0.1406
+        },
+        "numeric": {
+          "correct": 36,
+          "total": 59,
+          "acc": 0.6102
+        },
+        "open": {
+          "correct": 2,
+          "total": 77,
+          "acc": 0.026
+        }
+      }
+    },
+    "stemcell_c1": {
+      "body": "stemcell",
+      "summary": {
+        "acc": 0.235,
+        "correct": 47,
+        "n": 200
+      },
+      "by_score_type": {
+        "mcq": {
+          "correct": 9,
+          "total": 64,
+          "acc": 0.1406
+        },
+        "numeric": {
+          "correct": 36,
+          "total": 59,
+          "acc": 0.6102
+        },
+        "open": {
+          "correct": 2,
+          "total": 77,
+          "acc": 0.026
+        }
+      }
+    },
+    "triad_c1": {
+      "body": "triad",
+      "summary": {
+        "acc": 0.245,
+        "correct": 49,
+        "n": 200
+      },
+      "by_score_type": {
+        "mcq": {
+          "correct": 11,
+          "total": 64,
+          "acc": 0.1719
+        },
+        "numeric": {
+          "correct": 36,
+          "total": 59,
+          "acc": 0.6102
+        },
+        "open": {
+          "correct": 2,
+          "total": 77,
+          "acc": 0.026
+        }
+      }
+    }
+  },
+  "transformer_baseline": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "summary": {
+      "acc": 0.68,
+      "correct": 136,
+      "n": 200
+    },
+    "by_score_type": {
+      "mcq": {
+        "correct": 21,
+        "total": 64,
+        "acc": 0.3281
+      },
+      "numeric": {
+        "correct": 42,
+        "total": 59,
+        "acc": 0.7119
+      },
+      "open": {
+        "correct": 73,
+        "total": 77,
+        "acc": 0.9481
+      }
+    }
+  },
+  "bootstrap_by_body": {
+    "hub_c1": {
+      "mean_pp": -1.0,
+      "ci95_lo": -4.5,
+      "ci95_hi": 2.5,
+      "n": 200
+    },
+    "tile_c1": {
+      "mean_pp": -1.0,
+      "ci95_lo": -3.5,
+      "ci95_hi": 1.5,
+      "n": 200
+    },
+    "stemcell_c1": {
+      "mean_pp": -1.0,
+      "ci95_lo": -3.5,
+      "ci95_hi": 1.5,
+      "n": 200
+    },
+    "triad_c1": {
+      "mean_pp": 0.0,
+      "ci95_lo": -2.0,
+      "ci95_hi": 2.0,
+      "n": 200
+    }
+  },
+  "bootstrap_tier_b": {
+    "mean_pp": 0.0,
+    "ci95_lo": -2.0,
+    "ci95_hi": 2.0,
+    "n": 200
+  },
+  "fundraise_verdict": {
+    "paradigm_mvp": true,
+    "body_separation": true,
+    "transformer_replacement": false,
+    "corpus_gain_significant": false,
+    "best_corpus_arm": "triad_c1",
+    "scale_adequate_for_fundraise_narrative": true
+  }
+}

@@ -6,7 +6,7 @@
 
 | | |
 |--|--|
-| **Version** | 1.1 (Fundraise MVP 200Q) |
+| **Version** | 1.2 (Fundraise MVP 200Q + body separation) |
 | **Date** | 2026-06-16 |
 | **Main codebase** | [Rogue-Intelligence-INC/Valhalla](https://github.com/Rogue-Intelligence-INC/Valhalla) (proprietary) |
 | **License / 授权** | **Proprietary — NOT open source** · see [LICENSE](./LICENSE) |
@@ -39,7 +39,7 @@
 
 | 中文 | English |
 |------|---------|
-| Valhalla **不是**整体击败 Transformer；**200Q 融资 MVP**：原生 **24.5%** vs 0.5B **68%**；**数值子域 61% vs 71%** 为亮点；语料 Δ **0 pp（CI±2）**；Tier A patch **优于 random**；KD **+22.92 pp** 为不同范式上限。 | **200Q fundraise MVP**: native **24.5%** vs **68%** — no overall replacement; **numeric 61% vs 71%** wedge; corpus Δ **0 pp (CI±2)**; Tier A beats random; KD **+22.92 pp** upper bound. |
+| Valhalla **不是**整体击败 Transformer；**200Q 融资 MVP**：原生 **24.5%** vs 0.5B **68%**；**Body 分离** hub/tile/stem **23.5%**，triad **24.5%**；语料 Δ **0 pp（CI±2）**；数值 **61% vs 71%**；Tier A patch **优于 random**；KD **+22.92 pp** 为不同范式上限。 | **200Q fundraise MVP**: native **24.5%** vs **68%** — no overall replacement; **body split** hub/tile/stem **23.5%**, triad **24.5%**; corpus Δ **0 pp (CI±2)**; numeric **61% vs 71%**; Tier A beats random; KD **+22.92 pp** upper bound. |
 
 ---
 
@@ -49,7 +49,7 @@ Raw reports and JSON live in the main [Valhalla](https://github.com/Rogue-Intell
 
 | Experiment | Report |
 |------------|--------|
-| **Fundraise MVP (200Q)** | [05 融资 MVP](./zh/05_融资MVP实验报告.md) · `experiments/fundraise_mvp_20260616_1129.json` |
+| **Fundraise MVP 200Q** | [05 融资 MVP](./zh/05_融资MVP实验报告.md) · `experiments/fundraise_mvp_20260616_1143.json` |
 | Tier A Strict (48Q) | [strict incubation report](https://github.com/Rogue-Intelligence-INC/Valhalla/blob/main/reports/VALHALLA_STRICT_INCUBATION_REPORT_standard_20260616_0802.md) |
 | Tier B Native v2 (48Q) | [Tier B report](https://github.com/Rogue-Intelligence-INC/Valhalla/blob/main/reports/VALHALLA_TIER_B_NATIVE_REPORT_standard_20260616_0847.md) |
 | KD control (3B→0.5B) | [KD report](https://github.com/Rogue-Intelligence-INC/Valhalla/blob/main/reports/VALHALLA_KD_CONTROL_REPORT_standard_20260616_0905.md) |

@@ -1,71 +1,31 @@
-# Valhalla 融资 MVP 实验报告（200 题）
+# Valhalla Fundraise MVP 实验报告
 
-**版本**: 1.1 · **时间**: 20260616_1129 · **Rogue Intelligence LNC.**
+**时间**: 20260616_1143  |  **题数**: 200  |  **语料**: large
+**Body 分离**: hub / tile / stemcell / triad（各 + large corpus, c1）
 
-> 完整 JSON：`experiments/fundraise_mvp_20260616_1129.json`
+## 1. 总览（200Q）
 
----
+| Arm | Body | Corpus | Acc | Correct | Δ vs baseline | 95% CI |
+|-----|------|--------|-----|---------|---------------|--------|
+| baseline_no_corpus | triad | no | 24.50% | 49/200 | — | — |
+| hub_c1 | hub | yes | 23.50% | 47/200 | **-1.00 pp** | [-4.50, +2.50] |
+| tile_c1 | tile | yes | 23.50% | 47/200 | **-1.00 pp** | [-3.50, +1.50] |
+| stemcell_c1 | stemcell | yes | 23.50% | 47/200 | **-1.00 pp** | [-3.50, +1.50] |
+| triad_c1 | triad | yes | 24.50% | 49/200 | **+0.00 pp** | [-2.00, +2.00] |
+| **transformer_0.5b** | HF | — | **68.00%** | 136/200 | — | — |
 
-## 1. 为何需要 200 题
+## 2. 分题型（各 Body vs Transformer）
 
-48 题 ±1 题 = ±2.08 pp，无法区分信号与噪声。融资 MVP 扩展至 **200 题**（59 numeric / 64 MCQ / 77 open），large 语料，并增加：
+| score_type | baseline | hub | tile | stem | triad | Transformer |
+|------------|----------|-----|------|------|-------|-------------|
+| mcq | 17.19% | 14.06% | 14.06% | 14.06% | 17.19% | 32.81% |
+| numeric | 61.02% | 61.02% | 61.02% | 61.02% | 61.02% | 71.19% |
+| open | 2.60% | 2.60% | 2.60% | 2.60% | 2.60% | 94.81% |
 
-- Tier B 原生 vs **同题 Transformer 0.5B** 对标
-- **Bootstrap 5000 次** 95% 置信区间（paired）
+## 3. 融资 MVP 结论
 
----
+- **Body 分离已跑**: Hub / Tile / StemCell / Triad 各自 ingress + 原生解码
+- **baseline** 仍为 triad 无语料（与 48Q 协议一致）
+- **替代 Transformer ✗**；**数值子域**见上表 numeric 行
 
-## 2. 总览
-
-| 系统 | Acc | Correct |
-|------|-----|---------|
-| Tier B baseline（无语料） | **24.50%** | 49/200 |
-| Tier B triad + large corpus | **24.50%** | 49/200 |
-| **Qwen2.5-0.5B Transformer** | **68.00%** | 136/200 |
-
-**语料孵化 Δ**: +0.00 pp · **95% CI**: [-2.00, +2.00] pp → **large 语料在 200Q 上无显著增益**
-
----
-
-## 3. 分题型（关键发现）
-
-| score_type | Tier B native | Transformer 0.5B | 解读 |
-|------------|---------------|------------------|------|
-| **numeric** | **61.02%** (36/59) | 71.19% (42/59) | **差距最小** — 规则/Cortex 路径在算题子集接近小模型 |
-| mcq | 17.19% (11/64) | 32.81% (21/64) | 选项打分弱于 Transformer |
-| open | 2.60% (2/77) | 94.81% (73/77) | 检索式解码 vs 生成式 — **最大鸿沟** |
-
----
-
-## 4. 融资 MVP 判定
-
-| 标准 | 结果 |
-|------|------|
-| 200Q + CI + Transformer 对标 | ✓ **范式 MVP 达标** |
-| 整体替代 Transformer | ✗ 24.5% vs 68% |
-| 语料孵化显著增益 | ✗ CI 含 0 |
-| 投资人可讲「数值子域 61%」 | ✓ 诚实亮点 |
-| 投资人可讲「已替代 Transformer」 | ✗ 禁止 |
-
----
-
-## 5. 与 48 题实验关系
-
-| 规模 | Tier B overall | 语料 Δ | 说明 |
-|------|----------------|--------|------|
-| 48Q standard | 25.00% | +2.08 pp | 小样本偶然 |
-| **200Q fundraise** | 24.50% | **0 pp (CI±2)** | **更可信的整体估计** |
-
----
-
-## 6. 复现
-
-```bash
-cd Valhalla
-python3 tools/valhalla_model_bridge/build_fundraise_prompts.py
-python3 tools/valhalla_model_bridge/run_fundraise_mvp.py
-```
-
----
-
-*Proprietary · Rogue Intelligence LNC.*
+JSON: `/home/jouly/AI/Valhalla/reports/body_experiments/fundraise_mvp_20260616_1143.json`

@@ -205,23 +205,29 @@ python3 tools/valhalla_model_bridge/run_tier_b_incubation.py --phase standard
 
 ---
 
-## 8. Fundraise MVP (200Q, 20260616_1129)
+## 8. Fundraise MVP (200Q, 20260616_1143 · body separation)
 
-| System | Acc |
-|--------|-----|
-| Tier B native | 24.50% |
-| Qwen 0.5B | **68.00%** |
+Full report: [05_FUNDRAISE_MVP_REPORT.md](./05_FUNDRAISE_MVP_REPORT.md)
 
-| score_type | Tier B | Transformer |
-|------------|--------|-------------|
+| Arm | Body | Acc | Δ vs baseline | 95% CI |
+|-----|------|-----|---------------|--------|
+| baseline_no_corpus | triad | 24.50% | — | — |
+| hub_c1 | hub | 23.50% | -1.00 pp | [-4.50, +2.50] |
+| tile_c1 | tile | 23.50% | -1.00 pp | [-3.50, +1.50] |
+| stemcell_c1 | stemcell | 23.50% | -1.00 pp | [-3.50, +1.50] |
+| triad_c1 | triad | 24.50% | **0 pp** | [-2, +2] |
+| Qwen 0.5B | HF | **68.00%** | — | — |
+
+| score_type | Tier B triad | Transformer |
+|------------|--------------|-------------|
 | numeric | **61.02%** | 71.19% |
 | mcq | 17.19% | 32.81% |
 | open | 2.60% | 94.81% |
 
-Corpus Δ 0 pp, bootstrap 95% CI **[-2, +2] pp**. The 48Q +2.08 pp gain does not hold at 200Q.
+At 200Q, large corpus gives **no significant triad gain** (0 pp). Single-body arms slightly below triad baseline. The 48Q +2.08 pp was small-sample noise. Triad = Hub+Tile+StemCell **simultaneous** ingress.
 
-**Fundraise MVP**: paradigm evidence ✓; capability replacement ✗.
+**Fundraise MVP**: paradigm evidence ✓ (200Q + body split + CI + benchmark); capability replacement ✗.
 
 ---
 
-*Rogue Intelligence LNC. · v1.1 · 2026-06-16*
+*Rogue Intelligence LNC. · v1.2 · 2026-06-16*
