@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "modules": {
+    "hub": {
+      "label": "Hub",
+      "metaphor": "调度中枢",
+      "ingress": "每行语料 f64 编码后进入四元路由队列",
+      "internal": [
+        "四元路由 BH / MB / MN / BF — 统计 hub_routed[4]",
+        "Fate 探索后输出 hub_prefs（4 维亲和力）",
+        "Tier B：hub_prefs 加权 memory 检索与 MCQ 选项打分",
+        "Tier A：quad_layer_scales 缩放 Transformer 四层组"
+      ],
+      "exports": ["hub_routed", "hub_prefs", "quad_layer_scales"],
+      "single_body_effect": "仅 Hub 时 MCQ 翻转最多（Fate 权重改变选项排序）"
+    },
+    "tile": {
+      "label": "Tile",
+      "metaphor": "俄罗斯方块",
+      "ingress": "标量流进入 TileQuattro，块合并/分裂",
+      "internal": [
+        "completed_tiles 累积 → 每块 data_signature（f64 向量）",
+        "tile_ops：merge / split 计数",
+        "1-cycle 收敛：c5/c10 与 c1 结构相同",
+        "Tier B：tile_signatures 与 query 余弦相似度参与 numeric/cortex 解码"
+      ],
+      "exports": ["tile_signatures", "tile_completed", "tile_dim"],
+      "single_body_effect": "缺 Hub Fate 权重时 MCQ 略降；numeric 路径不变"
+    },
+    "stemcell": {
+      "label": "StemCell",
+      "metaphor": "干细胞图",
+      "ingress": "细胞 merge/divide 演化连接图",
+      "internal": [
+        "cells 按 energy 排序取 top-32 → stem_signatures",
+        "stem_connections 记录细胞间连边",
+        "1-cycle 收敛，与 Tile 一致",
+        "Tier B：stem 签名参与 numeric 候选加权"
+      ],
+      "exports": ["stem_signatures", "stem_cells", "stem_dim"],
+      "single_body_effect": "单独 Stem 时 MCQ 与 Tile 类似略降"
+    },
+    "triad": {
+      "label": "Triad",
+      "metaphor": "三体同时 ingress",
+      "ingress": "Hub + Tile + StemCell 并行 feed，同一 TriadSession",
+      "internal": [
+        "build_model_patch 融合三路：patch_vector 256 维",
+        "MCQ 路由与 baseline（triad 无语料）一致",
+        "200Q：triad ≥ 任一单 body（24.5% vs 23.5%）",
+        "numeric 四臂完全相同（61.02%）— 算式 decode 不依赖 body 差异"
+      ],
+      "exports": ["patch_vector", "tile_signatures", "stem_signatures", "hub_prefs"],
+      "single_body_effect": "非简单相加；三路信号互补检索"
+    }
+  },
+  "progress_regression": {
+    "progress": [
+      {"area": "实验范式", "detail": "200Q + body 分离 + Bootstrap CI + Transformer 对标"},
+      {"area": "Tier B 闭环", "detail": "valhalla_native_qa 无 HF forward 端到端"},
+      {"area": "数值 decode", "detail": "direct_math 26/26、word_problem 4/4；numeric 61% vs 71%"},
+      {"area": "结构信息 Tier A", "detail": "triad patch -2.08pp 优于 random -14.58pp"},
+      {"area": "Body 可分离", "detail": "hub/tile/stem/triad export 不同 patch_hash，200Q 各跑通"}
+    ],
+    "regression": [
+      {"area": "整体 acc", "detail": "Tier B 24.5% vs Transformer 68% — 不能宣称替代"},
+      {"area": "open 子域", "detail": "2.6% vs 94.8% — 无生成式 LM"},
+      {"area": "语料孵化", "detail": "200Q triad Δ 0pp，CI 含 0；48Q +2.08pp 作废"},
+      {"area": "Tier A patch", "detail": "strict 48Q 无净 acc 提升"},
+      {"area": "单 body", "detail": "hub/tile/stem 各 23.5%，比 triad -1pp（MCQ）"}
+    ]
+  }
+}

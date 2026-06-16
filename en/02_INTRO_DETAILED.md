@@ -1,6 +1,6 @@
 # Valhalla vs Transformer: Detailed Introduction
 
-**Version**: 1.1 · **Date**: 2026-06-16 · **Fundraise MVP**: [05_FUNDRAISE_MVP_REPORT.md](./05_FUNDRAISE_MVP_REPORT.md) (200Q)  
+**Version**: 1.3 · **Date**: 2026-06-16 · **Fundraise MVP**: [05_FUNDRAISE_MVP_REPORT.md](./05_FUNDRAISE_MVP_REPORT.md) · **Viz/API**: `viz/` + `api/`
 **Audience**: Tech leads, architects, engineering diligence
 
 ---
@@ -81,6 +81,35 @@ Corpus lines `feed` → `finalize_with_cycles(N)` → export:
 - `hub_prefs` (Fate affinities, Tier B retrieval weighting)
 
 **Reproducible finding**: Tile/Stem **converge in 1 cycle**—c5/c10 equals c1; extra cycles **do not help** (Tier A and B).
+
+### 2.3 Internal pipeline (one corpus line)
+
+Tier B `run_native_qa` (`native_qa.rs`):
+
+1. `encode(line)` → f64 vector  
+2. `TriadSession::with_body(budget, hub|tile|stemcell|triad)`  
+3. `feed` each corpus line + question  
+4. `finalize_with_cycles(1)` → `TriadFeedReport`  
+5. Export: `hub_prefs`, `patch_vector`, `tile_signatures`, `stem_signatures`  
+6. Branch on `score_type`: `decode_mcq` | `decode_numeric` | `decode_open`
+
+| Body | Hub | Tile sigs | Stem sigs | patch_vector |
+|------|-----|-----------|-----------|--------------|
+| hub | ✓ | ✗ | ✗ | hub only |
+| tile | ✗ | ✓ | ✗ | tile only |
+| stemcell | ✗ | ✗ | ✓ | stem only |
+| triad | ✓ | ✓ | ✓ | **256-d fusion** |
+
+**200Q observations**: numeric identical across all bodies (61.02%); MCQ drops for single-body (14.06% vs 17.19% triad); open ~2.6% all arms.
+
+### 2.4 Progress vs regression
+
+| Progress (paradigm) | Regression (capability) |
+|---------------------|-------------------------|
+| 200Q + body split + CI | 24.5% vs 68% overall |
+| Tier B no HF E2E | open 2.6% |
+| Tier A beats random patch | Tier A no net strict gain |
+| Honest corpus 0pp at 200Q | 48Q +2.08pp invalid |
 
 ---
 
@@ -230,4 +259,21 @@ At 200Q, large corpus gives **no significant triad gain** (0 pp). Single-body ar
 
 ---
 
-*Rogue Intelligence LNC. · v1.2 · 2026-06-16*
+## 9. Test API and Vue visualization
+
+```bash
+cd api && npm install && npm start    # :8780
+./scripts/start-dev.sh                # API + Vue :5173
+```
+
+| Endpoint | Purpose |
+|----------|---------|
+| `GET /api/bodies` | Hub/Tile/Stem internals |
+| `GET /api/progress` | Progress vs regression lists |
+| `POST /api/qa` | Tier B native QA (or mock) |
+
+Vue tabs: **200Q experiment** · **Body internals** · **Progress/regression** · **QA playground**
+
+---
+
+*Rogue Intelligence LNC. · v1.3 · 2026-06-16*

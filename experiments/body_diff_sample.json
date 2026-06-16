@@ -1,0 +1,22 @@
+{
+  "source": "fundraise_mvp_20260616_1143",
+  "description": "16 questions where body arms disagree with baseline (sample for viz)",
+  "questions": [
+    {"id": "MCQ_CS_01", "type": "mcq", "baseline": true, "hub_c1": false, "tile_c1": true, "stemcell_c1": true, "triad_c1": true},
+    {"id": "MCQ_F03", "type": "mcq", "baseline": false, "hub_c1": true, "tile_c1": false, "stemcell_c1": false, "triad_c1": false},
+    {"id": "MCQ_F14", "type": "mcq", "baseline": true, "hub_c1": false, "tile_c1": true, "stemcell_c1": true, "triad_c1": true},
+    {"id": "MCQ_F28", "type": "mcq", "baseline": false, "hub_c1": true, "tile_c1": false, "stemcell_c1": false, "triad_c1": false},
+    {"id": "MCQ_F33", "type": "mcq", "baseline": true, "hub_c1": false, "tile_c1": true, "stemcell_c1": true, "triad_c1": true},
+    {"id": "MCQ_F36", "type": "mcq", "baseline": false, "hub_c1": true, "tile_c1": false, "stemcell_c1": false, "triad_c1": false},
+    {"id": "MCQ_F43", "type": "mcq", "baseline": true, "hub_c1": true, "tile_c1": false, "stemcell_c1": false, "triad_c1": true},
+    {"id": "MCQ_F45", "type": "mcq", "baseline": true, "hub_c1": false, "tile_c1": true, "stemcell_c1": true, "triad_c1": true},
+    {"id": "MCQ_F49", "type": "mcq", "baseline": true, "hub_c1": false, "tile_c1": true, "stemcell_c1": true, "triad_c1": true},
+    {"id": "MCQ_GEO_01", "type": "mcq", "baseline": false, "hub_c1": true, "tile_c1": false, "stemcell_c1": false, "triad_c1": false},
+    {"id": "MCQ_PHIL_01", "type": "mcq", "baseline": true, "hub_c1": true, "tile_c1": false, "stemcell_c1": false, "triad_c1": true},
+    {"id": "MCQ_PHYS_01", "type": "mcq", "baseline": true, "hub_c1": false, "tile_c1": true, "stemcell_c1": true, "triad_c1": true},
+    {"id": "OPEN_F13", "type": "open", "baseline": true, "hub_c1": false, "tile_c1": false, "stemcell_c1": false, "triad_c1": false},
+    {"id": "OPEN_F25", "type": "open", "baseline": false, "hub_c1": true, "tile_c1": true, "stemcell_c1": true, "triad_c1": true},
+    {"id": "OPEN_F45", "type": "open", "baseline": true, "hub_c1": false, "tile_c1": false, "stemcell_c1": false, "triad_c1": false},
+    {"id": "ZH_03", "type": "open", "baseline": false, "hub_c1": true, "tile_c1": true, "stemcell_c1": true, "triad_c1": true}
+  ]
+}
