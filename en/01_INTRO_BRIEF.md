@@ -50,13 +50,15 @@
 
 **Safe claim**: Valhalla patches **change outputs** (~90% change rate) and are **not arbitrary noise**; under strict scoring we **cannot** claim benchmark accuracy gains on the small model.
 
-### Tier B — Native Valhalla (no HF)
+### Tier B native (200Q fundraise MVP)
 
-| Arm | Acc | Δ vs no corpus |
-|-----|-----|----------------|
-| baseline_no_corpus | 22.92% | — |
-| triad_c1 | **25.00%** | **+2.08 pp** |
-| Numeric (GSM/MATH) | **8/9** | word_problem + Cortex direct math |
+| Metric | Value |
+|--------|-------|
+| Overall | 24.50% vs Transformer **68%** |
+| **Numeric** | **61% vs 71%** |
+| Corpus Δ | 0 pp (CI ±2) |
+
+The 48Q +2.08 pp **does not replicate** at 200Q — use 200Q for fundraising.
 
 **Safe claim**: Native path **runs end-to-end**; numeric subset shows signal; **overall still far below Transformer**—not a replacement yet.
 

@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "experiment": "fundraise_mvp",
+    "timestamp": "20260616_1129",
+    "n": 200,
+    "corpus_tier": "large",
+    "corpus_lines": 142
+  },
+  "tier_b": {
+    "baseline": {
+      "summary": {"acc": 0.245, "correct": 49, "n": 200},
+      "by_score_type": {
+        "numeric": {"correct": 36, "total": 59, "acc": 0.6102},
+        "mcq": {"correct": 11, "total": 64, "acc": 0.1719},
+        "open": {"correct": 2, "total": 77, "acc": 0.026}
+      }
+    },
+    "triad_c1": {
+      "summary": {"acc": 0.245, "correct": 49, "n": 200},
+      "by_score_type": {
+        "numeric": {"correct": 36, "total": 59, "acc": 0.6102},
+        "mcq": {"correct": 11, "total": 64, "acc": 0.1719},
+        "open": {"correct": 2, "total": 77, "acc": 0.026}
+      }
+    }
+  },
+  "transformer_baseline": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "summary": {"acc": 0.68, "correct": 136, "n": 200},
+    "by_score_type": {
+      "numeric": {"correct": 42, "total": 59, "acc": 0.7119},
+      "mcq": {"correct": 21, "total": 64, "acc": 0.3281},
+      "open": {"correct": 73, "total": 77, "acc": 0.9481}
+    }
+  },
+  "bootstrap_tier_b": {
+    "mean_pp": 0.0,
+    "ci95_lo": -2.0,
+    "ci95_hi": 2.0,
+    "n": 200
+  },
+  "fundraise_verdict": {
+    "paradigm_mvp": true,
+    "transformer_replacement": false,
+    "corpus_gain_significant": false,
+    "scale_adequate_for_fundraise_narrative": true
+  }
+}

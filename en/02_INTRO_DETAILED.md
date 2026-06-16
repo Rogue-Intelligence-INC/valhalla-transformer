@@ -1,6 +1,6 @@
 # Valhalla vs Transformer: Detailed Introduction
 
-**Version**: 1.0 · **Date**: 2026-06-16 · **Type**: Technical + experimental deep dive  
+**Version**: 1.1 · **Date**: 2026-06-16 · **Fundraise MVP**: [05_FUNDRAISE_MVP_REPORT.md](./05_FUNDRAISE_MVP_REPORT.md) (200Q)  
 **Audience**: Tech leads, architects, engineering diligence
 
 ---
@@ -205,4 +205,23 @@ python3 tools/valhalla_model_bridge/run_tier_b_incubation.py --phase standard
 
 ---
 
-*Rogue Intelligence LNC. · Detailed intro v1.0 · 2026-06-16*
+## 8. Fundraise MVP (200Q, 20260616_1129)
+
+| System | Acc |
+|--------|-----|
+| Tier B native | 24.50% |
+| Qwen 0.5B | **68.00%** |
+
+| score_type | Tier B | Transformer |
+|------------|--------|-------------|
+| numeric | **61.02%** | 71.19% |
+| mcq | 17.19% | 32.81% |
+| open | 2.60% | 94.81% |
+
+Corpus Δ 0 pp, bootstrap 95% CI **[-2, +2] pp**. The 48Q +2.08 pp gain does not hold at 200Q.
+
+**Fundraise MVP**: paradigm evidence ✓; capability replacement ✗.
+
+---
+
+*Rogue Intelligence LNC. · v1.1 · 2026-06-16*

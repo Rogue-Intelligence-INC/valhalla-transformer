@@ -6,7 +6,7 @@
 
 | | |
 |--|--|
-| **Version** | 1.0 |
+| **Version** | 1.1 (Fundraise MVP 200Q) |
 | **Date** | 2026-06-16 |
 | **Main codebase** | [Rogue-Intelligence-INC/Valhalla](https://github.com/Rogue-Intelligence-INC/Valhalla) (proprietary) |
 | **License / 授权** | **Proprietary — NOT open source** · see [LICENSE](./LICENSE) |
@@ -21,6 +21,7 @@
 | 1 | [01_简介_简明版.md](./zh/01_简介_简明版.md) | 1–2 页简明介绍 |
 | 3 | [03_商业计划书_BP.md](./zh/03_商业计划书_BP.md) | 商业计划书 |
 | 4 | [04_技术白皮书.md](./zh/04_技术白皮书.md) | 实验驱动白皮书 |
+| **5** | [**05_融资MVP实验报告.md**](./zh/05_融资MVP实验报告.md) | **200Q + CI + Transformer 对标** |
 
 ## English · Detailed intro
 
@@ -30,6 +31,7 @@
 | 1 | [01_INTRO_BRIEF.md](./en/01_INTRO_BRIEF.md) | 1–2 page brief |
 | 3 | [03_BUSINESS_PLAN.md](./en/03_BUSINESS_PLAN.md) | Business plan |
 | 4 | [04_TECHNICAL_WHITEPAPER.md](./en/04_TECHNICAL_WHITEPAPER.md) | Experiment-driven whitepaper |
+| **5** | [**05_FUNDRAISE_MVP_REPORT.md**](./en/05_FUNDRAISE_MVP_REPORT.md) | **200Q + CI + Transformer benchmark** |
 
 ---
 
@@ -37,7 +39,7 @@
 
 | 中文 | English |
 |------|---------|
-| Valhalla **不是**已在通用 benchmark 上击败 Transformer；它是 **无 backprop 的结构孵化运行时**——Tier A 结构 patch **优于随机噪声**；Tier B 原生路径已跑通（~25% MVP）；KD **+22.92 pp** 为 **不同范式** 的上限参照。 | Valhalla **does not** claim SOTA over Transformers; it is a **no-backprop structure-incubation runtime**—Tier A beats random noise; Tier B runs end-to-end (~25% MVP); KD **+22.92 pp** is a **different-paradigm** upper bound. |
+| Valhalla **不是**整体击败 Transformer；**200Q 融资 MVP**：原生 **24.5%** vs 0.5B **68%**；**数值子域 61% vs 71%** 为亮点；语料 Δ **0 pp（CI±2）**；Tier A patch **优于 random**；KD **+22.92 pp** 为不同范式上限。 | **200Q fundraise MVP**: native **24.5%** vs **68%** — no overall replacement; **numeric 61% vs 71%** wedge; corpus Δ **0 pp (CI±2)**; Tier A beats random; KD **+22.92 pp** upper bound. |
 
 ---
 
@@ -47,6 +49,7 @@ Raw reports and JSON live in the main [Valhalla](https://github.com/Rogue-Intell
 
 | Experiment | Report |
 |------------|--------|
+| **Fundraise MVP (200Q)** | [05 融资 MVP](./zh/05_融资MVP实验报告.md) · `experiments/fundraise_mvp_20260616_1129.json` |
 | Tier A Strict (48Q) | [strict incubation report](https://github.com/Rogue-Intelligence-INC/Valhalla/blob/main/reports/VALHALLA_STRICT_INCUBATION_REPORT_standard_20260616_0802.md) |
 | Tier B Native v2 (48Q) | [Tier B report](https://github.com/Rogue-Intelligence-INC/Valhalla/blob/main/reports/VALHALLA_TIER_B_NATIVE_REPORT_standard_20260616_0847.md) |
 | KD control (3B→0.5B) | [KD report](https://github.com/Rogue-Intelligence-INC/Valhalla/blob/main/reports/VALHALLA_KD_CONTROL_REPORT_standard_20260616_0905.md) |
@@ -64,6 +67,7 @@ RUSTFLAGS='-L /opt/cuda/lib64' cargo build -p hub-f64 --release \
 export HF_ENDPOINT=https://hf-mirror.com
 python3 tools/valhalla_model_bridge/run_strict_incubation_experiment.py --phase standard
 python3 tools/valhalla_model_bridge/run_tier_b_incubation.py --phase standard
+python3 tools/valhalla_model_bridge/run_fundraise_mvp.py   # 200Q fundraise MVP
 ```
 
 ---
