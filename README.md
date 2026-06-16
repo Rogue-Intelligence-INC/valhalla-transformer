@@ -68,4 +68,14 @@ python3 tools/valhalla_model_bridge/run_tier_b_incubation.py --phase standard
 
 ---
 
+## 授权 / License
+
+**Proprietary — NOT open source / 专有 · 非开源**
+
+| 中文 | English |
+|------|---------|
+| 本文档集版权归 Rogue Intelligence LNC. 所有。未获书面许可不得复制、分发或开源发布。 | No open-source license is granted. See [LICENSE](./LICENSE). |
+
+---
+
 *Rogue Intelligence LNC. · valhalla-transformer v1.0 · **Proprietary / 非开源***
