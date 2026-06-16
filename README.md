@@ -8,7 +8,8 @@
 |--|--|
 | **Version** | 1.0 |
 | **Date** | 2026-06-16 |
-| **Main codebase** | [Rogue-Intelligence-INC/Valhalla](https://github.com/Rogue-Intelligence-INC/Valhalla) |
+| **Main codebase** | [Rogue-Intelligence-INC/Valhalla](https://github.com/Rogue-Intelligence-INC/Valhalla) (proprietary) |
+| **License / 授权** | **Proprietary — NOT open source** · see [LICENSE](./LICENSE) |
 
 ---
 
@@ -67,4 +68,4 @@ python3 tools/valhalla_model_bridge/run_tier_b_incubation.py --phase standard
 
 ---
 
-*Rogue Intelligence LNC. · valhalla-transformer v1.0*
+*Rogue Intelligence LNC. · valhalla-transformer v1.0 · **Proprietary / 非开源***
