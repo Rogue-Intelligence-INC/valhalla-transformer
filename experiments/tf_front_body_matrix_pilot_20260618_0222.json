@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "experiment": "tier_a_tf_front_body_protocol_matrix",
+    "timestamp": "20260618_0222",
+    "phase": "pilot",
+    "prompt_count": 12,
+    "corpus_tier": "small",
+    "corpus_lines": 24,
+    "rounds": 3,
+    "valhalla_cycles": 1,
+    "patch_mode": "full",
+    "bodies": [
+      "hub",
+      "tile",
+      "stemcell"
+    ],
+    "protocols": [
+      "tf_front_cumulative",
+      "direct_cumulative",
+      "tf_front_fresh_reload"
+    ],
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "strength": 0.08,
+    "strict_mcq": true,
+    "json_path": "reports/tier_a_tf_front/tf_front_body_matrix_pilot_20260618_0222.json"
+  },
+  "results": [
+    {
+      "arm": "hub_tf_front_cumulative",
+      "body": "hub",
+      "protocol": "tf_front_cumulative",
+      "patch_mode": "full",
+      "strength": 0.08,
+      "baseline_acc": 0.5,
+      "final_acc": 0.1667,
+      "gain_pp": -33.33,
+      "improved": [],
+      "regressed": [
+        "GSM_04",
+        "MATH_01",
+        "MATH_02",
+        "MCQ_PHYS_01"
+      ]
+    },
+    {
+      "arm": "hub_direct_cumulative",
+      "body": "hub",
+      "protocol": "direct_cumulative",
+      "patch_mode": "full",
+      "strength": 0.08,
+      "baseline_acc": 0.5,
+      "final_acc": 0.25,
+      "gain_pp": -25.0,
+      "improved": [],
+      "regressed": [
+        "GSM_04",
+        "MATH_01",
+        "MCQ_PHYS_01"
+      ]
+    },
+    {
+      "arm": "hub_tf_front_fresh_reload",
+      "body": "hub",
+      "protocol": "tf_front_fresh_reload",
+      "patch_mode": "full",
+      "strength": 0.08,
+      "baseline_acc": 0.5,
+      "final_acc": 0.3333,
+      "gain_pp": -16.67,
+      "improved": [],
+      "regressed": [
+        "GSM_04",
+        "MATH_01"
+      ]
+    },
+    {
+      "arm": "tile_tf_front_cumulative",
+      "body": "tile",
+      "protocol": "tf_front_cumulative",
+      "patch_mode": "full",
+      "strength": 0.08,
+      "baseline_acc": 0.5,
+      "final_acc": 0.3333,
+      "gain_pp": -16.67,
+      "improved": [
+        "MCQ_PHYS_02"
+      ],
+      "regressed": [
+        "GSM_04",
+        "MATH_01",
+        "MCQ_PHYS_01"
+      ]
+    },
+    {
+      "arm": "tile_direct_cumulative",
+      "body": "tile",
+      "protocol": "direct_cumulative",
+      "patch_mode": "full",
+      "strength": 0.08,
+      "baseline_acc": 0.5,
+      "final_acc": 0.25,
+      "gain_pp": -25.0,
+      "improved": [],
+      "regressed": [
+        "GSM_04",
+        "MATH_01",
+        "MCQ_PHYS_01"
+      ]
+    },
+    {
+      "arm": "tile_tf_front_fresh_reload",
+      "body": "tile",
+      "protocol": "tf_front_fresh_reload",
+      "patch_mode": "full",
+      "strength": 0.08,
+      "baseline_acc": 0.5,
+      "final_acc": 0.4167,
+      "gain_pp": -8.33,
+      "improved": [],
+      "regressed": [
+        "GSM_04"
+      ]
+    },
+    {
+      "arm": "stemcell_tf_front_cumulative",
+      "body": "stemcell",
+      "protocol": "tf_front_cumulative",
+      "patch_mode": "full",
+      "strength": 0.08,
+      "baseline_acc": 0.5,
+      "final_acc": 0.3333,
+      "gain_pp": -16.67,
+      "improved": [
+        "GSM_03"
+      ],
+      "regressed": [
+        "GSM_04",
+        "MATH_01",
+        "MCQ_PHYS_01"
+      ]
+    },
+    {
+      "arm": "stemcell_direct_cumulative",
+      "body": "stemcell",
+      "protocol": "direct_cumulative",
+      "patch_mode": "full",
+      "strength": 0.08,
+      "baseline_acc": 0.5,
+      "final_acc": 0.3333,
+      "gain_pp": -16.67,
+      "improved": [
+        "MCQ_CHEM_02"
+      ],
+      "regressed": [
+        "GSM_04",
+        "MATH_01",
+        "MCQ_PHYS_01"
+      ]
+    },
+    {
+      "arm": "stemcell_tf_front_fresh_reload",
+      "body": "stemcell",
+      "protocol": "tf_front_fresh_reload",
+      "patch_mode": "full",
+      "strength": 0.08,
+      "baseline_acc": 0.5,
+      "final_acc": 0.4167,
+      "gain_pp": -8.33,
+      "improved": [],
+      "regressed": [
+        "GSM_04"
+      ]
+    }
+  ]
+}

@@ -1,20 +1,33 @@
-# TF-Front 累积 Patch 实验（Body 分离 + LLM 前置 · this run only）
+# TF-Front Cumulative Patch — Experiment Summary
 
-**Run ID**: `20260618_0231`
+**Latest Run**: `20260618_0231` · full patch · strength 0.02  
+**JSON**: `experiments/tf_front_body_matrix_pilot_*.json`
 
-## 设计
+---
 
-hub / tile / stemcell **各 3 协议**（full patch 模式）：
+## Run sequence
 
-| 协议 | 语料路径 | 模型 |
-|------|----------|------|
-| `tf_front_cumulative` | 语料 → **LLM 扩写** → Valhalla | **累积** patch |
-| `direct_cumulative` | 语料 → Valhalla | **累积** patch |
-| `tf_front_fresh_reload` | 语料 → LLM → Valhalla | **每轮 reload** |
+| Run ID | Patch | strength | Summary |
+|--------|-------|----------|---------|
+| `20260617_1234` | legacy (input LN + anchor embed) | 0.08 | tile/stem/triad **direct +8.33 pp** (GSM_03); hub flat |
+| `20260618_0222` | **full** (LN+embed+lm_head+stem gate) | 0.08 | all 9 arms **regressed**; hub cumulative worst 16.67% |
+| `20260618_0231` | **full** | 0.02 | fresh_reload arms **hold 50%**; cumulative still slightly down |
 
-12 题 · 24 行 · 3 轮 · strength 0.02
+---
 
-## Full matrix
+## Full patch: three bodies fully modify LLM
+
+| Body | Weight targets |
+|------|----------------|
+| **Hub** | All input/post LN × Fate quad scale; prefs additive; corpus token embeds; lm_head all rows |
+| **Tile** | Dual LN × scale + Tile signature additive; corpus embeds; lm_head |
+| **StemCell** | Dual LN × scale + Stem signature; mlp.gate_proj row 0; corpus embeds; lm_head |
+
+Code: Valhalla monorepo `tools/tier_a_tf_front/patch_full.py`
+
+---
+
+## Latest matrix (20260618_0231 · 3 bodies × 3 protocols)
 
 | Arm | Final | Δ |
 |-----|-------|---|
@@ -28,13 +41,19 @@ hub / tile / stemcell **各 3 协议**（full patch 模式）：
 | stemcell_direct_cumulative | 33.33% | -16.67 pp |
 | stemcell_tf_front_fresh_reload | 50.00% | +0.00 pp |
 
-## Conclusion
+12 prompts · small corpus 24 lines · 3 rounds · strict MCQ
 
-- **最高 acc 臂**: `hub_tf_front_fresh_reload` → 50.00%
-- **对→错倒退**: 有
-- `hub_tf_front_cumulative` 新增错误: GSM_04, MATH_01
-- `hub_direct_cumulative` 新增错误: GSM_04, MATH_01
-- `tile_tf_front_cumulative` 新增错误: GSM_04
-- `tile_direct_cumulative` 新增错误: GSM_04
-- `stemcell_tf_front_cumulative` 新增错误: GSM_04
-- `stemcell_direct_cumulative` 新增错误: GSM_04, MATH_01
+---
+
+## Regression analysis (full architecture retained)
+
+1. **Task misalignment**: pilot corpus is general STEM facts, not GSM/MATH prompts; patch optimizes Valhalla structure, not QA labels.
+2. **Asymmetric failure**: full patch **breaks baseline-correct** items (GSM_04, MATH_01) rather than fixing GSM_01–03.
+3. **Cumulative compound**: rounds 1–2 often flat at 50%; round 3 flips; fresh_reload holds baseline.
+4. **Body asymmetry**: Hub most global, regresses earliest; Tile has 33 per-layer blocks, regresses latest.
+5. **LLM front**: hub tf_front matches direct; cumulative enrich uses already-patched model (feedback loop).
+6. **Small n**: 1 question = 8.33 pp; legacy +8.33 pp = single GSM_03 flip.
+
+---
+
+*Rogue Intelligence LNC. · valhalla-transformer*

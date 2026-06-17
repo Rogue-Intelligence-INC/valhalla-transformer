@@ -6,8 +6,8 @@
 
 | | |
 |--|--|
-| **Version** | 1.4 (TF-front body×protocol matrix pilot) |
-| **Date** | 2026-06-17 |
+| **Version** | 1.5 (TF-front full patch · hub/tile/stemcell) |
+| **Date** | 2026-06-18 |
 | **Main codebase** | [Rogue-Intelligence-INC/Valhalla](https://github.com/Rogue-Intelligence-INC/Valhalla) (proprietary) |
 | **License** | **Proprietary — NOT open source** · [NON_OPEN_SOURCE.md](./NON_OPEN_SOURCE.md) · [LICENSE](./LICENSE) |
 | **Scope** | 文档 + 实验 JSON + 演示 API/Viz · **不含** Val-OS 硬件调度接口 |
@@ -38,7 +38,7 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 | ★ | [**02_简介_详解版.md**](./zh/02_简介_详解版.md) | 进步/退步、Hub/Tile/Stem 内部、实验 |
 | 1 | [01_简介_简明版.md](./zh/01_简介_简明版.md) | 1–2 页简明 |
 | **5** | [**05_融资MVP实验报告.md**](./zh/05_融资MVP实验报告.md) | 200Q 详版 |
-| **6** | [**06_TF前置与孵化实验总结.md**](./zh/06_TF前置与孵化实验总结.md) | Body×协议 12 臂 pilot（20260617_1234） |
+| **6** | [**06_TF前置与孵化实验总结.md**](./zh/06_TF前置与孵化实验总结.md) | Full patch 三 body × 3 协议（20260618_0231） |
 
 ## English
 
@@ -51,11 +51,11 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 
 ---
 
-## Core conclusion（最新 pilot 20260617_1234）
+## Core conclusion（最新 20260618_0231 · full patch）
 
 | 中文 | English |
 |------|---------|
-| **进步**：12 臂 Body×协议跑通；tile/stem/triad direct +8.33pp（GSM_03）；tile/stem LLM-front 累积同效。**持平**：hub 全臂；triad LLM-front；fresh_reload 全臂。**倒退**：无 baseline→final 对→错；hub round2→3 内退。 | **Progress**: 12-arm matrix; tile/stem/triad direct +1Q; tile/stem LLM-front matches. **Flat**: hub; triad LLM-front; reload arms. **Regression**: none vs baseline; hub round3 rollback. |
+| **建构**：Hub/Tile/StemCell 均可 full 改 LLM（LN+embed+lm_head+stem gate）。**持平**：strength 0.02 下 fresh_reload 三臂 50%。**退步**：累积 patch 主要 flip GSM_04/MATH_01（baseline 已有正确）；legacy 0.08 direct 曾 +8.33 pp（GSM_03）。 | **Architecture**: all three bodies fully patch LLM. **Flat**: fresh_reload at 50% (strength 0.02). **Regression**: cumulative flips baseline-correct items; legacy direct +8.33 pp on GSM_03. |
 
 ---
 
@@ -82,4 +82,4 @@ python3 tools/tier_a_tf_front/run_cumulative_experiment.py --phase pilot --round
 
 ---
 
-*Rogue Intelligence LNC. · v1.4 · Proprietary*
+*Rogue Intelligence LNC. · v1.5 · Proprietary*
