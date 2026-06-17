@@ -1,32 +1,40 @@
-# TF-Front Cumulative Patch — Body Split + LLM Front (this run only)
+# TF-Front 累积 Patch 实验（Body 分离 + LLM 前置 · this run only）
 
-**Run ID**: `20260617_1234`
+**Run ID**: `20260618_0231`
 
-## Design
+## 设计
 
-**4 bodies × 3 protocols = 12 arms** (hub / tile / stemcell / triad):
+hub / tile / stemcell **各 3 协议**（full patch 模式）：
 
-- `tf_front_cumulative` — corpus → **LLM paraphrase** → Valhalla → **cumulative** patch  
-- `direct_cumulative` — corpus → Valhalla → **cumulative** patch  
-- `tf_front_fresh_reload` — corpus → LLM → Valhalla → **reload each round**
+| 协议 | 语料路径 | 模型 |
+|------|----------|------|
+| `tf_front_cumulative` | 语料 → **LLM 扩写** → Valhalla | **累积** patch |
+| `direct_cumulative` | 语料 → Valhalla | **累积** patch |
+| `tf_front_fresh_reload` | 语料 → LLM → Valhalla | **每轮 reload** |
 
-12 prompts · 24-line small corpus · 3 rounds · strength 0.08
+12 题 · 24 行 · 3 轮 · strength 0.02
 
-## Final results
+## Full matrix
 
 | Arm | Final | Δ |
 |-----|-------|---|
-| hub (all 3) | 50% | 0 |
-| tile/stem direct + tile/stem tf_front cumulative | **58.33%** | **+8.33 pp** |
-| triad direct | **58.33%** | **+8.33 pp** |
-| triad tf_front cumulative | 50% | 0 |
-| all fresh_reload | 50% | 0 |
+| hub_tf_front_cumulative | 33.33% | -16.67 pp |
+| hub_direct_cumulative | 33.33% | -16.67 pp |
+| hub_tf_front_fresh_reload | 50.00% | +0.00 pp |
+| tile_tf_front_cumulative | 41.67% | -8.33 pp |
+| tile_direct_cumulative | 41.67% | -8.33 pp |
+| tile_tf_front_fresh_reload | 50.00% | +0.00 pp |
+| stemcell_tf_front_cumulative | 41.67% | -8.33 pp |
+| stemcell_direct_cumulative | 33.33% | -16.67 pp |
+| stemcell_tf_front_fresh_reload | 50.00% | +0.00 pp |
 
-## Conclusion (this run)
+## Conclusion
 
-- **Progress**: tile / stem / triad **direct cumulative** +1 Q (GSM_03); **tile/stem LLM-front cumulative** also 58.33%  
-- **Flat**: hub all arms; triad LLM-front; all fresh_reload  
-- **Regression vs baseline**: none (no correct→incorrect flips)  
-- **Issue**: hub arms hit 58.33% at round 2 then **dropped back** to 50% at round 3  
-
-JSON: `experiments/tf_front_body_matrix_pilot_20260617_1234.json`
+- **最高 acc 臂**: `hub_tf_front_fresh_reload` → 50.00%
+- **对→错倒退**: 有
+- `hub_tf_front_cumulative` 新增错误: GSM_04, MATH_01
+- `hub_direct_cumulative` 新增错误: GSM_04, MATH_01
+- `tile_tf_front_cumulative` 新增错误: GSM_04
+- `tile_direct_cumulative` 新增错误: GSM_04
+- `stemcell_tf_front_cumulative` 新增错误: GSM_04
+- `stemcell_direct_cumulative` 新增错误: GSM_04, MATH_01
