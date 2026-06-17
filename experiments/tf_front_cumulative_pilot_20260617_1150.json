@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "experiment": "tier_a_tf_front_cumulative",
+    "timestamp": "20260617_1150",
+    "phase": "pilot",
+    "prompt_count": 12,
+    "corpus_tier": "small",
+    "corpus_lines": 24,
+    "rounds": 3,
+    "valhalla_cycles": 1,
+    "body": "triad",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "strength": 0.08,
+    "strict_mcq": true,
+    "protocol": "corpus → LLM → Valhalla → cumulative patch (single model load)",
+    "json_path": "reports/tier_a_tf_front/tf_front_cumulative_pilot_20260617_1150.json"
+  },
+  "results": [
+    {
+      "arm": "tf_front_cumulative",
+      "use_llm_front": true,
+      "fresh_reload": false,
+      "baseline_acc": 0.5,
+      "final_acc": 0.5,
+      "gain_pp": 0.0,
+      "round_trace": [
+        {
+          "round": 0,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": null,
+          "tile_count": null,
+          "patch_fingerprint": null
+        },
+        {
+          "round": 1,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": 0.35784730450466606,
+          "tile_count": 93,
+          "patch_fingerprint": "f6a2f374abc8e307"
+        },
+        {
+          "round": 2,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": 0.3577654391162198,
+          "tile_count": 83,
+          "patch_fingerprint": "d73df63434b5c55c"
+        },
+        {
+          "round": 3,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": 0.35784730450466606,
+          "tile_count": 54,
+          "patch_fingerprint": "c9304110a8dd94f5"
+        }
+      ]
+    },
+    {
+      "arm": "valhalla_direct_cumulative",
+      "use_llm_front": false,
+      "fresh_reload": false,
+      "baseline_acc": 0.5,
+      "final_acc": 0.5833,
+      "gain_pp": 8.33,
+      "round_trace": [
+        {
+          "round": 0,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": null,
+          "tile_count": null,
+          "patch_fingerprint": null
+        },
+        {
+          "round": 1,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": 0.35784730450466606,
+          "tile_count": 33,
+          "patch_fingerprint": "62ae64b110584ee9"
+        },
+        {
+          "round": 2,
+          "acc": 0.5833,
+          "correct": 7,
+          "patch_l2": 0.35784730450466606,
+          "tile_count": 32,
+          "patch_fingerprint": "eda601fd4a4a19bd"
+        },
+        {
+          "round": 3,
+          "acc": 0.5833,
+          "correct": 7,
+          "patch_l2": 0.35784730450466606,
+          "tile_count": 20,
+          "patch_fingerprint": "96609cb1fb86f62f"
+        }
+      ]
+    },
+    {
+      "arm": "tf_front_fresh_reload",
+      "use_llm_front": true,
+      "fresh_reload": true,
+      "baseline_acc": 0.5,
+      "final_acc": 0.5,
+      "gain_pp": 0.0,
+      "round_trace": [
+        {
+          "round": 0,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": null,
+          "tile_count": null,
+          "patch_fingerprint": null
+        },
+        {
+          "round": 1,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": 0.35784730450466606,
+          "tile_count": 93,
+          "patch_fingerprint": "f6a2f374abc8e307"
+        },
+        {
+          "round": 2,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": 0.35758799981218903,
+          "tile_count": 83,
+          "patch_fingerprint": "d73df63434b5c55c"
+        },
+        {
+          "round": 3,
+          "acc": 0.5,
+          "correct": 6,
+          "patch_l2": 0.35784730450466606,
+          "tile_count": 59,
+          "patch_fingerprint": "4084fabcb68851fb"
+        }
+      ]
+    }
+  ]
+}
