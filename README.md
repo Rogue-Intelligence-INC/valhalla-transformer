@@ -6,7 +6,7 @@
 
 | | |
 |--|--|
-| **Version** | 1.4 (TF-front cumulative incubation summary) |
+| **Version** | 1.4 (TF-front body×protocol matrix pilot) |
 | **Date** | 2026-06-17 |
 | **Main codebase** | [Rogue-Intelligence-INC/Valhalla](https://github.com/Rogue-Intelligence-INC/Valhalla) (proprietary) |
 | **License** | **Proprietary — NOT open source** · [NON_OPEN_SOURCE.md](./NON_OPEN_SOURCE.md) · [LICENSE](./LICENSE) |
@@ -37,7 +37,8 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 |---|------|------|
 | ★ | [**02_简介_详解版.md**](./zh/02_简介_详解版.md) | 进步/退步、Hub/Tile/Stem 内部、实验 |
 | 1 | [01_简介_简明版.md](./zh/01_简介_简明版.md) | 1–2 页简明 |
-
+| **5** | [**05_融资MVP实验报告.md**](./zh/05_融资MVP实验报告.md) | 200Q 详版 |
+| **6** | [**06_TF前置与孵化实验总结.md**](./zh/06_TF前置与孵化实验总结.md) | Body×协议 12 臂 pilot（20260617_1234） |
 
 ## English
 
@@ -45,14 +46,16 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 |---|----------|
 | ★ | [**02_INTRO_DETAILED.md**](./en/02_INTRO_DETAILED.md) |
 | 1 | [01_INTRO_BRIEF.md](./en/01_INTRO_BRIEF.md) |
+| **5** | [**05_FUNDRAISE_MVP_REPORT.md**](./en/05_FUNDRAISE_MVP_REPORT.md) |
+| **6** | [**06_TF_FRONT_INCUBATION_SUMMARY.md**](./en/06_TF_FRONT_INCUBATION_SUMMARY.md) |
 
 ---
 
-## Core conclusion
+## Core conclusion（最新 pilot 20260617_1234）
 
 | 中文 | English |
 |------|---------|
-| **进步**：direct 累积 patch **+1 题**（50%→58.33%）；E2E 三臂跑通；GSM_03 翻转。**持平**：LLM 前置两臂 50%。**退步**：无对→错翻转。 | **Progress**: direct cumulative **+1 Q**; E2E OK; GSM_03 flip. **Flat**: both LLM-front arms 50%. **Regression**: none. |
+| **进步**：12 臂 Body×协议跑通；tile/stem/triad direct +8.33pp（GSM_03）；tile/stem LLM-front 累积同效。**持平**：hub 全臂；triad LLM-front；fresh_reload 全臂。**倒退**：无 baseline→final 对→错；hub round2→3 内退。 | **Progress**: 12-arm matrix; tile/stem/triad direct +1Q; tile/stem LLM-front matches. **Flat**: hub; triad LLM-front; reload arms. **Regression**: none vs baseline; hub round3 rollback. |
 
 ---
 
@@ -61,7 +64,7 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 ```
 api/           REST test interface (experiments, bodies, QA)
 viz/           Vue 3 dashboard
-experiments/   JSON runs + body_internals.json + tf_front_cumulative_*.json
+experiments/   JSON runs + tf_front_body_matrix_*.json
 zh/ en/        Intro docs (01, 02, 05, 06 pushed; 03, 04 local)
 scripts/       start-dev.sh
 ```
@@ -73,10 +76,7 @@ scripts/       start-dev.sh
 ```bash
 git clone https://github.com/Rogue-Intelligence-INC/Valhalla.git
 cd Valhalla
-RUSTFLAGS='-L /opt/cuda/lib64' cargo build -p hub-f64 --release --bin valhalla_native_qa
-python3 tools/valhalla_model_bridge/run_fundraise_mvp.py
-
-# TF-front cumulative patch (Tier A, separate protocol)
+RUSTFLAGS='-L /opt/cuda/lib64' cargo build -p hub-f64 --release --bin valhalla_model_export
 python3 tools/tier_a_tf_front/run_cumulative_experiment.py --phase pilot --rounds 3
 ```
 
