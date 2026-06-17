@@ -37,8 +37,7 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 |---|------|------|
 | ★ | [**02_简介_详解版.md**](./zh/02_简介_详解版.md) | 进步/退步、Hub/Tile/Stem 内部、实验 |
 | 1 | [01_简介_简明版.md](./zh/01_简介_简明版.md) | 1–2 页简明 |
-| **5** | [**05_融资MVP实验报告.md**](./zh/05_融资MVP实验报告.md) | 200Q 详版 |
-| **6** | [**06_TF前置与孵化实验总结.md**](./zh/06_TF前置与孵化实验总结.md) | TF-front 累积 patch pilot（仅此实验） |
+
 
 ## English
 
@@ -46,8 +45,6 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 |---|----------|
 | ★ | [**02_INTRO_DETAILED.md**](./en/02_INTRO_DETAILED.md) |
 | 1 | [01_INTRO_BRIEF.md](./en/01_INTRO_BRIEF.md) |
-| **5** | [**05_FUNDRAISE_MVP_REPORT.md**](./en/05_FUNDRAISE_MVP_REPORT.md) |
-| **6** | [**06_TF_FRONT_INCUBATION_SUMMARY.md**](./en/06_TF_FRONT_INCUBATION_SUMMARY.md) |
 
 ---
 
