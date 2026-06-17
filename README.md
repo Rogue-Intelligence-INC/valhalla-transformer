@@ -35,8 +35,7 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 | ★ | [**02_简介_详解版.md**](./zh/02_简介_详解版.md) | 进步/退步、Hub/Tile/Stem 内部、实验 |
 | 1 | [01_简介_简明版.md](./zh/01_简介_简明版.md) | 1–2 页简明 |
 | **5** | [**05_融资MVP实验报告.md**](./zh/05_融资MVP实验报告.md) | 200Q 详版 |
-| 3 | 03_商业计划书_BP.md | 本地维护，不随本仓库推送 |
-| 4 | 04_技术白皮书.md | 本地维护，不随本仓库推送 |
+
 
 ## English
 
