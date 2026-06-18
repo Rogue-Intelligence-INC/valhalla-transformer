@@ -38,7 +38,7 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 | ★ | [**02_简介_详解版.md**](./zh/02_简介_详解版.md) | 进步/退步、Hub/Tile/Stem 内部、实验 |
 | 1 | [01_简介_简明版.md](./zh/01_简介_简明版.md) | 1–2 页简明 |
 | **5** | [**05_融资MVP实验报告.md**](./zh/05_融资MVP实验报告.md) | 200Q 详版 |
-| **6** | [**06_TF前置与孵化实验总结.md**](./zh/06_TF前置与孵化实验总结.md) | Full patch 三 body × 3 协议（20260618_0231） |
+| **6** | [**06_TF前置与孵化实验总结.md**](./zh/06_TF前置与孵化实验总结.md) | **Hub / Tile / StemCell 分体** QA 与矩阵（非单体 Valhalla） |
 
 ## English
 
@@ -51,11 +51,15 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 
 ---
 
-## Core conclusion（最新 20260618_0231 · full patch）
+## Core conclusion（Hub / Tile / StemCell 分体 · 20260618_0231）
 
-| 中文 | English |
-|------|---------|
-| **进步**：legacy 0.08 五臂 GSM_03 45→18（分步乘法推理）；详见 06 文档逐题 QA。**建构**：三 body full patch 跑通。**持平**：fresh_reload 0.02 三臂 50%。**退步**：full 打掉 GSM_04/MATH_01 等 baseline 正确。 | **Progress**: legacy GSM_03 45→18 with step reasoning (5 arms); see doc §QA detail. **Flat**: fresh_reload 50%. **Regression**: full patch breaks baseline-correct shorts. |
+| Body | legacy 0.08 | full 0.02 | 进步 QA（代表） |
+|------|-------------|-----------|----------------|
+| **Hub** | 50% 全持平 | fresh_reload 50% hold | **无**单题 flip |
+| **Tile** | **58.3%** GSM_03 +8.33 pp | fresh_reload 50% | GSM_03 45→18 分步推理 |
+| **StemCell** | **58.3%** 同 Tile | fresh_reload 50% | GSM_03 + full 时 MCQ_CHEM_02 |
+
+详见 [06_TF前置与孵化实验总结.md](./zh/06_TF前置与孵化实验总结.md) — **按三体分章，不把 Valhalla 当作整体**。
 
 ---
 

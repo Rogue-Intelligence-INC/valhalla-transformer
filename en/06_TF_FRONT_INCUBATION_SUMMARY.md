@@ -1,167 +1,204 @@
-# TF-Front Cumulative Patch — Experiment Summary
+# TF-Front Cumulative Patch — Hub / Tile / StemCell Separate Report
 
 **Latest Run**: `20260618_0231` · full patch · strength 0.02  
-**JSON**: `experiments/tf_front_body_matrix_pilot_*.json`
+**JSON**: `experiments/tf_front_body_matrix_pilot_*.json`  
+**Principle**: **Do not treat Valhalla as one monolith** — ingress, export, LLM surgery, and QA effects are reported **per Hub / Tile / StemCell pipeline**.
 
 ---
 
-## Run sequence
+## Three-body roles (experiment design)
 
-| Run ID | Patch | strength | Summary |
-|--------|-------|----------|---------|
-| `20260617_1234` | legacy (input LN + anchor embed) | 0.08 | tile/stem/triad **direct +8.33 pp** (GSM_03); hub flat |
-| `20260618_0222` | **full** (LN+embed+lm_head+stem gate) | 0.08 | all 9 arms **regressed**; hub cumulative worst 16.67% |
-| `20260618_0231` | **full** | 0.02 | fresh_reload arms **hold 50%**; cumulative still slightly down |
+| Body | Ingress produces | Full patch targets on LLM |
+|------|------------------|---------------------------|
+| **Hub** | Fate quad routing `hub_routed`, prefs, `patch_vector` (**no** tiles / stem cells) | All dual LN × quad scale + prefs additive; embeds; lm_head |
+| **Tile** | **93** completed tile signatures, per-layer additive pattern (**no** stem) | Dual LN × scale + **tile signature** additive; embeds; lm_head |
+| **StemCell** | **193** cells, energy-weighted quad scales, stem signatures (**no** tiles) | Dual LN + stem sig; **mlp.gate_proj row 0**; embeds; lm_head |
 
----
-
-## Progress: per-question detail
-
-### A. Main gain — GSM_03 (legacy 0.08 · +8.33 pp · 5 arms)
-
-**Prompt** (GSM_03 · math_word):
-
-> A store sells 5 notebooks at $3 each and 2 pens at $1.50 each. What is the total cost? Answer with the final number.
-
-**Reference**: `18`
-
-| Stage | Model output | Extracted | Verdict |
-|-------|--------------|-----------|---------|
-| **Baseline** | `45` (single wrong number, no reasoning) | 45 | ❌ |
-| **After patch** (final) | The total cost for the notebooks is \(5×3=15\) dollars, and the total cost for the pens is \(2×1.50=3\) dollars. Therefore, the combined total cost is \(15+3=18\) dollars. | 18 | ✅ |
-
-**Arms with this improvement** (zero regression):
-
-| Arm | Final acc | Δ |
-|-----|-----------|---|
-| `tile_tf_front_cumulative` | 58.33% | +8.33 pp |
-| `tile_direct_cumulative` | 58.33% | +8.33 pp |
-| `stemcell_tf_front_cumulative` | 58.33% | +8.33 pp |
-| `stemcell_direct_cumulative` | 58.33% | +8.33 pp |
-| `triad_direct_cumulative` | 58.33% | +8.33 pp |
-
-**Round trajectory** (`tile_direct_cumulative`):
-
-| Round | GSM_03 extracted | Verdict | Note |
-|-------|------------------|---------|------|
-| 0 baseline | 45 | ❌ | No multiplication steps |
-| 1 | 46 | ❌ | Still wrong |
-| 2 | 18 | ✅ | Notebook/pen step-by-step reasoning appears |
-| 3 | 18 | ✅ | Stable correct |
-
-**Mechanism**: `small` corpus has no notebook prompt text; gain comes from **LayerNorm scale shifting decode path** so 0.5B moves from “one wrong number” to “two products then sum” — **path alignment**, not corpus memorization. Hub arms never flip GSM_03 (all flat at 50%).
+Code: `Valhalla/tools/tier_a_tf_front/patch_full.py` · export: `valhalla_model_export --body hub|tile|stemcell`
 
 ---
 
-### B. Single-question gains under full patch 0.08 (net still negative)
+## Hub
 
-Full patch also flips individual items **wrong→correct**, but breaks baseline-correct items in the same arm.
+### Ingress signature (pilot corpus)
 
-#### B1. GSM_03 — `stemcell_tf_front_cumulative` (full 0.08)
+- `tile_count = 0`, `stem_cell_count = 0`
+- `quad_layer_scales ≈ [0.99996, 1.00001, …]` — near-neutral Fate routing
+- Most **global** signal: single `patch_vector` + quad prefs
 
-| | Output | Extracted |
-|--|--------|-----------|
-| Baseline | `45` | 45 ❌ |
-| Final | notebook \(5×3=15\) + pen \(2×1.50=3\) → 18 | 18 ✅ |
+### Three protocols × three runs
 
-Same arm regresses: `GSM_04` 28→54, `MATH_01` 391→561, `MCQ_PHYS_01` B→no letter → **final 33.33% (-16.67 pp)**.
+| Run | patch | s | tf_front_cum | direct_cum | fresh_reload |
+|-----|-------|---|--------------|------------|--------------|
+| 1234 | legacy | 0.08 | 50% · 0 | 50% · 0 | 50% · 0 |
+| 0222 | full | 0.08 | **16.7% · -33.3** | 25% · -25 | 33.3% · -16.7 |
+| 0231 | full | 0.02 | 33.3% · -16.7 | 33.3% · -16.7 | **50% · 0** |
 
-#### B2. MCQ_PHYS_02 — `tile_tf_front_cumulative` (full 0.08)
+### Hub progress (per-question QA)
 
-**Prompt**:
+**No `improved` flips on Hub across legacy / full runs.**
 
-> The acceleration due to gravity on Earth is approximately: A) 1.6 m/s² B) 9.8 m/s² C) 20 m/s² D) 98 m/s²
+- GSM_03 stays `45` ❌ — Hub does **not** induce notebook/pen step reasoning
+- Contrast with Tile/StemCell legacy +8.33 pp: **global Fate patch does not shift this decode path**
 
-| | Output | Extracted |
-|--|--------|-----------|
-| Baseline | Long explanation, no option letter | None ❌ |
-| Final | …Therefore, the correct answer is: **B) 9.8 m/s².** | B ✅ |
+### Hub regression (per-question QA)
 
-Same arm regresses: `GSM_04`, `MATH_01`, `MCQ_PHYS_01` → **final 33.33% (-16.67 pp)**.
+Full 0.08 `hub_tf_front_cumulative` (worst arm):
 
-#### B3. MCQ_CHEM_02 — `stemcell_direct_cumulative` (full 0.08)
+| ID | Ref | Baseline | Hub final | Pattern |
+|----|-----|----------|-----------|---------|
+| GSM_04 | 28 | `28` ✅ | `19` ❌ | short numeric drift |
+| MATH_01 | 391 | `391` ✅ | `401` ❌ | product drift |
+| MATH_02 | 12 | `12` ✅ | `10` ❌ | short numeric |
+| MCQ_PHYS_01 | B | `B` ✅ | prose, no letter ❌ | MCQ format break |
 
-**Prompt**:
+Full 0.02 cumulative: GSM_04 (28→58), MATH_01 (391→561); **fresh_reload holds 50% like Tile/Stem**.
 
-> Water's chemical formula is: A) CO2 B) H2O C) O2 D) NaCl
+### Hub summary
 
-| | Output | Extracted |
-|--|--------|-----------|
-| Baseline | formula is **ABCD** | None ❌ |
-| Final | empirical formula H2O → **B. H2O** | B ✅ |
-
-Same arm regresses: `GSM_04`, `MATH_01`, `MCQ_PHYS_01` → **final 33.33% (-16.67 pp)**.
-
----
-
-### C. Baseline wrong items never fixed (gain did not spread)
-
-Items **still wrong** after patch across legacy/full runs:
-
-| ID | Prompt gist | Ref | Typical baseline output |
-|----|-------------|-----|-------------------------|
-| GSM_01 | Natalia clips April+May | 72 | May only = 24 |
-| GSM_02 | Janet duck eggs revenue | 18 | `$48` |
-| GSM_03 | 5 notebooks + 2 pens | 18 | `45` (**legacy tile/stem/triad only fixed**) |
-| MCQ_PHYS_02 | Earth gravity options | B | explanation, no letter |
-| MCQ_CHEM_01 | atom subatomic particles | C | `A` (hallucinated multi-choice) |
-| MCQ_CHEM_02 | water formula options | B | `ABCD` or None |
-
-Gain is **question-specific** (GSM_03 multiplication total); no cross-GSM or cross-MCQ systematic lift.
+| | |
+|--|--|
+| Ingress | Pure Fate global vector, no blocks/cells |
+| legacy | **Flat** all protocols, no per-item gain |
+| full | **Earliest, deepest** regression (global lm_head + LN) |
+| Protocol | tf_front ≡ direct (LLM front **no Hub-specific lift**) |
 
 ---
 
-### D. Regression contrast — baseline-correct items broken (full patch risk)
+## Tile
 
-| ID | Ref | Baseline | Typical full 0.02 final (hub cumulative) |
-|----|-----|----------|------------------------------------------|
-| GSM_04 | 28 | `24-6+10=28` ✅ | `58` ❌ |
-| MATH_01 | 391 | `391` ✅ | `561` ❌ |
-| MCQ_PHYS_01 | B | `B` ✅ | prose “Newton”, no letter ❌ |
+### Ingress signature
 
-Regression pattern: **short numeric / single-letter** outputs destabilize first; contrasts with GSM_03 gain (long reasoning chain).
+- `tile_count = 93`, `stem_cell_count = 0`
+- `quad_layer_scales = [1.0, …]` (tile export does not lift quads)
+- **33 block signatures** → per-layer input/post LN **differentiated additive** (full patch)
+
+### Three protocols × three runs
+
+| Run | patch | s | tf_front_cum | direct_cum | fresh_reload |
+|-----|-------|---|--------------|------------|--------------|
+| 1234 | legacy | 0.08 | **58.3% · +8.33** | **58.3% · +8.33** | 50% · 0 |
+| 0222 | full | 0.08 | 33.3% · -16.7 | 25% · -25 | 41.7% · -8.3 |
+| 0231 | full | 0.02 | 41.7% · -8.3 | 41.7% · -8.3 | **50% · 0** |
+
+### Tile progress (per-question QA)
+
+#### Main gain — GSM_03 (legacy 0.08 · direct & tf_front · +8.33 pp · **zero regression**)
+
+**Prompt**: 5 notebooks × $3 + 2 pens × $1.50, total cost?
+
+| | Baseline | After Tile patch |
+|--|----------|------------------|
+| Output | `45` | \(5×3=15\) + \(2×1.50=3\) → **18** |
+| Protocols | — | `tile_direct_cumulative`, `tile_tf_front_cumulative` identical |
+
+**Rounds** (`tile_direct_cumulative`): r0=45 → r1=46 → **r2=18** → r3=18
+
+**Tile mechanism**: block signatures spread across layer LN — **local perturbation** flips decode from one number to two-step multiplication; `small` corpus has no prompt text → **structure-induced path alignment**.
+
+#### Secondary — MCQ_PHYS_02 (full 0.08 · `tile_tf_front_cumulative`)
+
+| | Baseline | Tile final |
+|--|----------|------------|
+| Output | long text, no letter | **B) 9.8 m/s²** ✅ |
+| Net | — | same arm regresses GSM_04/MATH_01/MCQ_PHYS_01 → 33.3% |
+
+### Tile regression
+
+Full cumulative: **GSM_04** 28→54/58 (**round 3** flip; rounds 1–2 often still 50%)  
+Full 0.08 direct: also MATH_01, MCQ_PHYS_01
+
+### Tile summary
+
+| | |
+|--|--|
+| Ingress | 93 blocks + per-layer signatures |
+| legacy | **Stable +8.33 pp** (GSM_03); tf_front ≡ direct |
+| full | **Latest** regression timeline; MCQ_PHYS_02 can flip |
+| Protocol | fresh_reload 0.02 holds; cumulative is risk channel |
 
 ---
 
-## Full patch: three bodies fully modify LLM
+## StemCell
 
-| Body | Weight targets |
-|------|----------------|
-| **Hub** | All input/post LN × Fate quad scale; prefs additive; corpus token embeds; lm_head all rows |
-| **Tile** | Dual LN × scale + Tile signature additive; corpus embeds; lm_head |
-| **StemCell** | Dual LN × scale + Stem signature; mlp.gate_proj row 0; corpus embeds; lm_head |
+### Ingress signature
 
-Code: Valhalla monorepo `tools/tier_a_tf_front/patch_full.py`
+- `tile_count = 0`, `stem_cell_count = 193` (pilot ~144–193 per round)
+- `quad_layer_scales ≈ [1.0015, …]` (**energy-weighted**, uniform lift)
+- Stem signatures + **gate_proj row 0** (full patch only)
+
+### Three protocols × three runs
+
+| Run | patch | s | tf_front_cum | direct_cum | fresh_reload |
+|-----|-------|---|--------------|------------|--------------|
+| 1234 | legacy | 0.08 | **58.3% · +8.33** | **58.3% · +8.33** | 50% · 0 |
+| 0222 | full | 0.08 | 33.3% · -16.7 | 33.3% · -16.7 | 41.7% · -8.3 |
+| 0231 | full | 0.02 | 41.7% · -8.3 | 33.3% · -16.7 | **50% · 0** |
+
+### StemCell progress (per-question QA)
+
+#### Main gain — GSM_03 (legacy 0.08 · same shape as Tile)
+
+| | Baseline | After StemCell patch |
+|--|----------|----------------------|
+| Output | `45` | step notebook/pen → **18** ✅ |
+| Arms | — | `stemcell_direct_cumulative`, `stemcell_tf_front_cumulative` |
+
+Same output **shape** as Tile (two products then sum) — different ingress (cell energy vs block sig) → **both pipelines can induce the same reasoning format**.
+
+#### GSM_03 — full 0.08 `stemcell_tf_front_cumulative`
+
+45→18 ✅ but regresses GSM_04/MATH_01/MCQ_PHYS_01 → net -16.7 pp.
+
+#### MCQ_CHEM_02 — full 0.08 `stemcell_direct_cumulative`
+
+| | Baseline | StemCell final |
+|--|----------|----------------|
+| Output | `ABCD` hallucination | **B. H2O** ✅ |
+| Net | — | same arm regresses three items → 33.3% |
+
+**Stem-specific**: chemical formula MCQ flip (Tile did not flip this item); aligns with **gate_proj + cell signatures** for formula-style outputs.
+
+### StemCell regression
+
+Like Tile: GSM_04 primary; full 0.02 direct also MATH_01 (391→561). Hub hurts MATH_01 more broadly than Stem.
+
+### StemCell summary
+
+| | |
+|--|--|
+| Ingress | 193 cells + energy micro-lift on quads |
+| legacy | GSM_03 +8.33 pp, **ties Tile as best** |
+| full | GSM_03 + MCQ_CHEM_02 gains; cumulative net negative |
+| vs Tile | MCQ chem formula flips favor Stem; direct 0.02 slightly worse than Tile |
 
 ---
 
-## Latest matrix (20260618_0231 · 3 bodies × 3 protocols)
+## Cross-body comparison
 
-| Arm | Final | Δ |
-|-----|-------|---|
-| hub_tf_front_cumulative | 33.33% | -16.67 pp |
-| hub_direct_cumulative | 33.33% | -16.67 pp |
-| hub_tf_front_fresh_reload | 50.00% | +0.00 pp |
-| tile_tf_front_cumulative | 41.67% | -8.33 pp |
-| tile_direct_cumulative | 41.67% | -8.33 pp |
-| tile_tf_front_fresh_reload | 50.00% | +0.00 pp |
-| stemcell_tf_front_cumulative | 41.67% | -8.33 pp |
-| stemcell_direct_cumulative | 33.33% | -16.67 pp |
-| stemcell_tf_front_fresh_reload | 50.00% | +0.00 pp |
+| Dimension | Hub | Tile | StemCell |
+|-----------|-----|------|----------|
+| Ingress structure | Fate global | 93 block sigs | 193 cells |
+| legacy GSM_03 | ❌ | ✅ +8.33 pp | ✅ +8.33 pp |
+| legacy best final | 50% | **58.3%** | **58.3%** |
+| full worst final | **16.7%** | 25% | 33.3% |
+| full item gains | none | MCQ_PHYS_02 | GSM_03 + MCQ_CHEM_02 |
+| full main regression | 4 items | GSM_04 (latest) | GSM_04 + MATH_01 |
+| fresh_reload 0.02 | 50% hold | 50% hold | 50% hold |
+| LLM front vs direct | **same** | **same** | **same** |
 
-12 prompts · small corpus 24 lines · 3 rounds · strict MCQ
-
----
-
-## Synthesis (full architecture retained)
-
-1. **Task misalignment**: pilot corpus is general STEM facts, not GSM/MATH prompts.
-2. **Asymmetric gain/loss**: progress on GSM_03 / select MCQ format; regression on fragile baseline-correct items.
-3. **Cumulative compound**: round 2 often still 50%; round 3 flips GSM_04; fresh_reload holds.
-4. **Body asymmetry**: Hub most global; Tile 33 per-layer blocks, latest GSM_03 timeline.
-5. **LLM front**: hub tf_front matches direct; cumulative enrich uses patched model (feedback loop).
-6. **Small n**: ±8.33 pp = 1 question; legacy +8.33 pp = **GSM_03 only**.
+**Shared baseline wrong items** (all three): GSM_01, GSM_02, MCQ_PHYS_02 (except Tile full single flip), MCQ_CHEM_01 — **gains do not generalize across bodies**.
 
 ---
 
-*Rogue Intelligence LNC. · valhalla-transformer*
+## Per-body synthesis (not monolithic Valhalla)
+
+1. **Hub**: global lm_head + Fate vector → breaks **short numeric / single-letter** baseline correct; **no** GSM_03 reasoning gain.
+2. **Tile**: block signatures **spread across LN** → **stable legacy GSM_03 gain**; longest full-patch regression timeline.
+3. **StemCell**: cells + gate_proj → **same math gain shape as Tile** + **unique MCQ chem formula** flip; energy quad lift adds slight global perturbation.
+4. **Protocol (all three)**: cumulative compound > single-round full; fresh_reload holds; LLM front does not change body ranking.
+5. **Corpus**: `small` has no GSM prompts — all body gains are **decode-path** effects, not prompt memorization.
+
+---
+
+*Rogue Intelligence LNC. · Hub / Tile / StemCell separate report · valhalla-transformer*
