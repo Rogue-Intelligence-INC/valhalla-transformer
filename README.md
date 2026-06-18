@@ -55,7 +55,7 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 
 | 中文 | English |
 |------|---------|
-| **建构**：Hub/Tile/StemCell 均可 full 改 LLM（LN+embed+lm_head+stem gate）。**持平**：strength 0.02 下 fresh_reload 三臂 50%。**退步**：累积 patch 主要 flip GSM_04/MATH_01（baseline 已有正确）；legacy 0.08 direct 曾 +8.33 pp（GSM_03）。 | **Architecture**: all three bodies fully patch LLM. **Flat**: fresh_reload at 50% (strength 0.02). **Regression**: cumulative flips baseline-correct items; legacy direct +8.33 pp on GSM_03. |
+| **进步**：legacy 0.08 五臂 GSM_03 45→18（分步乘法推理）；详见 06 文档逐题 QA。**建构**：三 body full patch 跑通。**持平**：fresh_reload 0.02 三臂 50%。**退步**：full 打掉 GSM_04/MATH_01 等 baseline 正确。 | **Progress**: legacy GSM_03 45→18 with step reasoning (5 arms); see doc §QA detail. **Flat**: fresh_reload 50%. **Regression**: full patch breaks baseline-correct shorts. |
 
 ---
 
