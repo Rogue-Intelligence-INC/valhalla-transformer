@@ -6,7 +6,7 @@
 
 | | |
 |--|--|
-| **Version** | 1.7 (Fair Benchmark · Tile/Stem multi-cycle · TF-front) |
+| **Version** | 1.8 (VPB potential benchmark · Fair · Tile/Stem cycles) |
 | **Date** | 2026-06-20 |
 | **Main codebase** | [Rogue-Intelligence-INC/Valhalla](https://github.com/Rogue-Intelligence-INC/Valhalla) (proprietary) |
 | **License** | **Proprietary — NOT open source** · [NON_OPEN_SOURCE.md](./NON_OPEN_SOURCE.md) · [LICENSE](./LICENSE) |
@@ -31,7 +31,7 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 
 **Fair Benchmark** Viz tab: `experiments/fair_benchmark_*.json` via `/api/fair-benchmark`.
 
-**Tile/Stem cycles**: `experiments/tile_stemcell_cycles_latest.json` via `/api/tile-stemcell-cycles`.
+**VPB Potential**: `experiments/vpb_forecast_latest.json` · PFI **0.81** · hybrid **77.2%** vs TF 71%
 
 ---
 
@@ -45,6 +45,7 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 | **6** | [**06_TF前置与孵化实验总结.md**](./zh/06_TF前置与孵化实验总结.md) | Hub / Tile / StemCell 分体 QA 与矩阵 |
 | **10** | [**10_FAIR_BENCHMARK_SPEC.md**](./zh/10_FAIR_BENCHMARK_SPEC.md) | 公正 benchmark 协议 (fair-1.1) |
 | **11** | [**11_TILE_STEMCELL_CYCLE_EXPERIMENT.md**](./zh/11_TILE_STEMCELL_CYCLE_EXPERIMENT.md) | Tile/Stem 多轮 cycle（145Q test） |
+| **12** | [**12_VPB_POTENTIAL_BENCHMARK.md**](./zh/12_VPB_POTENTIAL_BENCHMARK.md) | VPB 潜力 benchmark（PFI 0.81 · hybrid 77%） |
 | **7** | [**07_TILE_STEMCELL_HARD_EXPERIMENT.md**](./zh/07_TILE_STEMCELL_HARD_EXPERIMENT.md) | Tile/Stem 79 题高难度 |
 
 ## English
@@ -57,6 +58,7 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 | **6** | [**06_TF_FRONT_INCUBATION_SUMMARY.md**](./en/06_TF_FRONT_INCUBATION_SUMMARY.md) |
 | **10** | [**10_FAIR_BENCHMARK_SPEC.md**](./en/10_FAIR_BENCHMARK_SPEC.md) |
 | **11** | [**11_TILE_STEMCELL_CYCLE_EXPERIMENT.md**](./en/11_TILE_STEMCELL_CYCLE_EXPERIMENT.md) |
+| **12** | [**12_VPB_POTENTIAL_BENCHMARK.md**](./en/12_VPB_POTENTIAL_BENCHMARK.md) |
 | **7** | [**07_TILE_STEMCELL_HARD_EXPERIMENT.md**](./en/07_TILE_STEMCELL_HARD_EXPERIMENT.md) |
 
 ---
@@ -107,4 +109,4 @@ python3 tools/tier_a_tf_front/run_cumulative_experiment.py --phase pilot --round
 
 ---
 
-*Rogue Intelligence LNC. · v1.7 · Proprietary*
+*Rogue Intelligence LNC. · v1.8 · Proprietary*
