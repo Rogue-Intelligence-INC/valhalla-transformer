@@ -1,6 +1,6 @@
 # Valhalla vs Transformer: Detailed Introduction
 
-**Version**: 1.3 · **Date**: 2026-06-16 · **Fundraise MVP**: [05_FUNDRAISE_MVP_REPORT.md](./05_FUNDRAISE_MVP_REPORT.md) · **Viz/API**: `viz/` + `api/`
+**Version**: 1.4 · **Date**: 2026-06-20 · **Fundraise MVP**: [05_FUNDRAISE_MVP_REPORT.md](./05_FUNDRAISE_MVP_REPORT.md) · **Fair Benchmark**: [10_FAIR_BENCHMARK_SPEC.md](./10_FAIR_BENCHMARK_SPEC.md) · **Multi-cycle**: [11_TILE_STEMCELL_CYCLE_EXPERIMENT.md](./11_TILE_STEMCELL_CYCLE_EXPERIMENT.md) · **Viz/API**: `viz/` + `api/`
 **Audience**: Tech leads, architects, engineering diligence
 
 ---
@@ -81,6 +81,8 @@ Corpus lines `feed` → `finalize_with_cycles(N)` → export:
 - `hub_prefs` (Fate affinities, Tier B retrieval weighting)
 
 **Reproducible finding**: Tile/Stem **converge in 1 cycle**—c5/c10 equals c1; extra cycles **do not help** (Tier A and B).
+
+**20260620 validation (Fair 145Q)**: Tile patch_hash c1≡c20, QA +0.00 pp; StemCell patch drifts but QA +0.69 pp (open only, CI includes 0). **Persistent 40.7%** and **Tier A patch 69%** are the real levers — see [11_TILE_STEMCELL_CYCLE_EXPERIMENT.md](./11_TILE_STEMCELL_CYCLE_EXPERIMENT.md).
 
 ### 2.3 Internal pipeline (one corpus line)
 
@@ -276,4 +278,4 @@ Vue tabs: **200Q experiment** · **Body internals** · **Progress/regression** �
 
 ---
 
-*Rogue Intelligence LNC. · v1.3 · 2026-06-16*
+*Rogue Intelligence LNC. · v1.4 · 2026-06-20*

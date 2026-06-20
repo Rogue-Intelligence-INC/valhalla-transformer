@@ -6,8 +6,8 @@
 
 | | |
 |--|--|
-| **Version** | 1.5 (TF-front full patch · hub/tile/stemcell) |
-| **Date** | 2026-06-18 |
+| **Version** | 1.7 (Fair Benchmark · Tile/Stem multi-cycle · TF-front) |
+| **Date** | 2026-06-20 |
 | **Main codebase** | [Rogue-Intelligence-INC/Valhalla](https://github.com/Rogue-Intelligence-INC/Valhalla) (proprietary) |
 | **License** | **Proprietary — NOT open source** · [NON_OPEN_SOURCE.md](./NON_OPEN_SOURCE.md) · [LICENSE](./LICENSE) |
 | **Scope** | 文档 + 实验 JSON + 演示 API/Viz · **不含** Val-OS 硬件调度接口 |
@@ -29,6 +29,10 @@ chmod +x scripts/start-dev.sh
 
 Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwise mock).
 
+**Fair Benchmark** Viz tab: `experiments/fair_benchmark_*.json` via `/api/fair-benchmark`.
+
+**Tile/Stem cycles**: `experiments/tile_stemcell_cycles_latest.json` via `/api/tile-stemcell-cycles`.
+
 ---
 
 ## 中文 · 详解优先
@@ -39,7 +43,9 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 | 1 | [01_简介_简明版.md](./zh/01_简介_简明版.md) | 1–2 页简明 |
 | **5** | [**05_融资MVP实验报告.md**](./zh/05_融资MVP实验报告.md) | 200Q 详版 |
 | **6** | [**06_TF前置与孵化实验总结.md**](./zh/06_TF前置与孵化实验总结.md) | Hub / Tile / StemCell 分体 QA 与矩阵 |
-| **7** | [**07_TILE_STEMCELL_HARD_EXPERIMENT.md**](./zh/07_TILE_STEMCELL_HARD_EXPERIMENT.md) | Tile/Stem **79 题** 高难度 5 切片（20260619_0213） |
+| **10** | [**10_FAIR_BENCHMARK_SPEC.md**](./zh/10_FAIR_BENCHMARK_SPEC.md) | 公正 benchmark 协议 (fair-1.1) |
+| **11** | [**11_TILE_STEMCELL_CYCLE_EXPERIMENT.md**](./zh/11_TILE_STEMCELL_CYCLE_EXPERIMENT.md) | Tile/Stem 多轮 cycle（145Q test） |
+| **7** | [**07_TILE_STEMCELL_HARD_EXPERIMENT.md**](./zh/07_TILE_STEMCELL_HARD_EXPERIMENT.md) | Tile/Stem 79 题高难度 |
 
 ## English
 
@@ -49,7 +55,20 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 | 1 | [01_INTRO_BRIEF.md](./en/01_INTRO_BRIEF.md) |
 | **5** | [**05_FUNDRAISE_MVP_REPORT.md**](./en/05_FUNDRAISE_MVP_REPORT.md) |
 | **6** | [**06_TF_FRONT_INCUBATION_SUMMARY.md**](./en/06_TF_FRONT_INCUBATION_SUMMARY.md) |
+| **10** | [**10_FAIR_BENCHMARK_SPEC.md**](./en/10_FAIR_BENCHMARK_SPEC.md) |
+| **11** | [**11_TILE_STEMCELL_CYCLE_EXPERIMENT.md**](./en/11_TILE_STEMCELL_CYCLE_EXPERIMENT.md) |
 | **7** | [**07_TILE_STEMCELL_HARD_EXPERIMENT.md**](./en/07_TILE_STEMCELL_HARD_EXPERIMENT.md) |
+
+---
+
+## Core conclusion（Tile/Stem 多轮 cycle · 20260620_1032）
+
+| Body | c1→c20 structure | QA Δ (145Q isolated) | 解释 |
+|------|------------------|----------------------|------|
+| **Tile** | patch_hash **不变** · 177 tiles | **+0.00 pp** | Fate 第 1 轮收敛早停 |
+| **StemCell** | patch_hash **变化** · 277 stem | **+0.69 pp** (open only) | patch 演化 ≠ Tier B 解码变化 |
+
+**有效杠杆**：persistent session 40.7% · Tier A patch 69% · **非** 盲目加 cycle。详见 [11_TILE_STEMCELL_CYCLE_EXPERIMENT.md](./zh/11_TILE_STEMCELL_CYCLE_EXPERIMENT.md)。
 
 ---
 
@@ -88,4 +107,4 @@ python3 tools/tier_a_tf_front/run_cumulative_experiment.py --phase pilot --round
 
 ---
 
-*Rogue Intelligence LNC. · v1.5 · Proprietary*
+*Rogue Intelligence LNC. · v1.7 · Proprietary*

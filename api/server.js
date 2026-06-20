@@ -11,7 +11,11 @@
  *   GET  /api/progress
  *   GET  /api/body-diff
  *   POST /api/qa
- *   GET  /api/smoke          (proxy valhalla_dashboard if running)
+ *   GET  /api/fair-benchmark
+ *   GET  /api/fair-benchmark/spec
+ *   GET  /api/fair-benchmark/:id
+ *   GET  /api/tile-stemcell-cycles
+ *   GET  /api/tile-stemcell-cycles/:id
  */
 
 import cors from "cors";
@@ -68,7 +72,7 @@ app.get("/api/health", (_req, res) => {
   res.json({
     ok: true,
     service: "valhalla-transformer-api",
-    version: "1.3.0",
+    version: "1.6.0",
     native_qa: resolveNativeBin() ? "available" : "mock_only",
     experiments_dir: EXP_DIR,
   });
@@ -135,6 +139,119 @@ app.post("/api/qa", (req, res) => {
   });
 });
 
+function listFairBenchmarkRuns() {
+  if (!fs.existsSync(EXP_DIR)) return [];
+  const files = fs
+    .readdirSync(EXP_DIR)
+    .filter((f) => f.startsWith("fair_benchmark_") && f.endsWith(".json") && f !== "fair_benchmark_latest.json");
+  return files
+    .map((f) => {
+      const data = readJson(path.join(EXP_DIR, f));
+      const mem = (data.results || []).find((r) => r.arm === "triad_c1" || r.track === "memory_tier_b");
+      return {
+        id: f.replace(".json", ""),
+        file: f,
+        phase: data.meta?.phase,
+        timestamp: data.meta?.timestamp,
+        prompt_count: data.meta?.prompt_count,
+        memory_acc: mem?.summary?.acc ?? mem?.acc,
+        with_patch: data.meta?.with_patch,
+        with_transformer: data.meta?.with_transformer,
+      };
+    })
+    .sort((a, b) => (b.timestamp || "").localeCompare(a.timestamp || ""));
+}
+
+function fairBenchmarkPayload(id) {
+  if (id === "latest") {
+    const p = path.join(EXP_DIR, "fair_benchmark_latest.json");
+    if (fs.existsSync(p)) return readJson(p);
+  }
+  const file = path.join(EXP_DIR, `${id}.json`);
+  if (!fs.existsSync(file)) return null;
+  return readJson(file);
+}
+
+app.get("/api/fair-benchmark", (_req, res) => {
+  res.json({ runs: listFairBenchmarkRuns() });
+});
+
+app.get("/api/fair-benchmark/spec", (_req, res) => {
+  const candidates = [
+    path.join(ROOT, "en", "10_FAIR_BENCHMARK_SPEC.md"),
+    path.join(ROOT, "zh", "10_FAIR_BENCHMARK_SPEC.md"),
+  ];
+  const specPath = candidates.find((p) => fs.existsSync(p));
+  if (!specPath) {
+    return res.json({
+      summary:
+        "fair-1.0: decontaminated corpus, smoke/val/test splits, memory+patch+generate tracks.",
+    });
+  }
+  const text = fs.readFileSync(specPath, "utf8");
+  res.json({ summary: text.slice(0, 1200), path: path.basename(specPath) });
+});
+
+app.get("/api/fair-benchmark/:id", (req, res) => {
+  const data = fairBenchmarkPayload(req.params.id);
+  if (!data) {
+    return res.status(404).json({ error: "fair benchmark run not found", id: req.params.id });
+  }
+  res.json(data);
+});
+
+function listTileStemCycleRuns() {
+  if (!fs.existsSync(EXP_DIR)) return [];
+  const files = fs
+    .readdirSync(EXP_DIR)
+    .filter(
+      (f) =>
+        f.startsWith("tile_stemcell_cycles_") &&
+        f.endsWith(".json") &&
+        f !== "tile_stemcell_cycles_latest.json",
+    );
+  return files
+    .map((f) => {
+      const data = readJson(path.join(EXP_DIR, f));
+      const iso = (data.results || []).filter((r) => r.protocol === "isolated");
+      const tile20 = iso.find((r) => r.body === "tile" && r.cycles === 20);
+      const stem20 = iso.find((r) => r.body === "stemcell" && r.cycles === 20);
+      return {
+        id: f.replace(".json", ""),
+        file: f,
+        phase: data.meta?.phase,
+        timestamp: data.meta?.timestamp,
+        prompt_count: data.meta?.prompt_count,
+        tile_c20_acc: tile20?.summary?.acc,
+        stem_c20_acc: stem20?.summary?.acc,
+        verdict: data.verdict,
+      };
+    })
+    .sort((a, b) => (b.timestamp || "").localeCompare(a.timestamp || ""));
+}
+
+function tileStemCyclePayload(id) {
+  if (id === "latest") {
+    const p = path.join(EXP_DIR, "tile_stemcell_cycles_latest.json");
+    if (fs.existsSync(p)) return readJson(p);
+  }
+  const file = path.join(EXP_DIR, `${id}.json`);
+  if (!fs.existsSync(file)) return null;
+  return readJson(file);
+}
+
+app.get("/api/tile-stemcell-cycles", (_req, res) => {
+  res.json({ runs: listTileStemCycleRuns() });
+});
+
+app.get("/api/tile-stemcell-cycles/:id", (req, res) => {
+  const data = tileStemCyclePayload(req.params.id);
+  if (!data) {
+    return res.status(404).json({ error: "tile/stem cycle run not found", id: req.params.id });
+  }
+  res.json(data);
+});
+
 app.get("/api/smoke", async (_req, res) => {
   try {
     const r = await fetch(`${DASHBOARD_URL}/api/state`, { signal: AbortSignal.timeout(3000) });
@@ -160,7 +277,8 @@ if (process.argv[1]?.endsWith("server.js")) {
   app.listen(PORT, () => {
     console.log(`valhalla-transformer API http://127.0.0.1:${PORT}`);
     console.log(`  GET  /api/health /api/experiments /api/bodies /api/progress`);
-    console.log(`  POST /api/qa`);
+    console.log(`  GET  /api/fair-benchmark /api/fair-benchmark/:id`);
+    console.log(`  GET  /api/tile-stemcell-cycles /api/tile-stemcell-cycles/:id`);
   });
 }
 
