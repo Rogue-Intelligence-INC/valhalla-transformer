@@ -14,6 +14,8 @@
  *   GET  /api/fair-benchmark
  *   GET  /api/fair-benchmark/spec
  *   GET  /api/fair-benchmark/:id
+ *   GET  /api/hybrid-unified
+ *   GET  /api/hybrid-unified/:id
  *   GET  /api/tile-stemcell-cycles
  *   GET  /api/tile-stemcell-cycles/:id
  */
@@ -72,7 +74,9 @@ app.get("/api/health", (_req, res) => {
   res.json({
     ok: true,
     service: "valhalla-transformer-api",
-    version: "1.6.0",
+    version: "2.0.0",
+    hybrid_product: "hybrid-2.0",
+    fair_benchmark: "fair-1.2",
     native_qa: resolveNativeBin() ? "available" : "mock_only",
     experiments_dir: EXP_DIR,
   });
@@ -185,7 +189,7 @@ app.get("/api/fair-benchmark/spec", (_req, res) => {
   if (!specPath) {
     return res.json({
       summary:
-        "fair-1.0: decontaminated corpus, smoke/val/test splits, memory+patch+generate tracks.",
+        "fair-1.2: decontaminated corpus; Hybrid unified product hybrid-2.0.",
     });
   }
   const text = fs.readFileSync(specPath, "utf8");
@@ -252,6 +256,57 @@ app.get("/api/tile-stemcell-cycles/:id", (req, res) => {
   res.json(data);
 });
 
+function listHybridUnifiedRuns() {
+  if (!fs.existsSync(EXP_DIR)) return [];
+  return fs
+    .readdirSync(EXP_DIR)
+    .filter(
+      (f) =>
+        f.startsWith("hybrid_unified_") &&
+        f.endsWith(".json") &&
+        f !== "hybrid_unified_latest.json",
+    )
+    .map((f) => {
+      const data = readJson(path.join(EXP_DIR, f));
+      const h = data.summary?.hybrid || {};
+      const st = h.by_score_type || {};
+      return {
+        id: f.replace(".json", ""),
+        file: f,
+        phase: data.meta?.phase,
+        timestamp: data.meta?.timestamp,
+        hybrid_product_version: data.meta?.hybrid_product_version,
+        total_acc: h.acc,
+        open_acc: st.open?.acc,
+        mcq_acc: st.mcq?.acc,
+        numeric_acc: st.numeric?.acc,
+      };
+    })
+    .sort((a, b) => (b.timestamp || "").localeCompare(a.timestamp || ""));
+}
+
+function hybridUnifiedPayload(id) {
+  if (id === "latest") {
+    const p = path.join(EXP_DIR, "hybrid_unified_latest.json");
+    if (fs.existsSync(p)) return readJson(p);
+  }
+  const file = path.join(EXP_DIR, `${id}.json`);
+  if (!fs.existsSync(file)) return null;
+  return readJson(file);
+}
+
+app.get("/api/hybrid-unified", (_req, res) => {
+  res.json({ runs: listHybridUnifiedRuns() });
+});
+
+app.get("/api/hybrid-unified/:id", (req, res) => {
+  const data = hybridUnifiedPayload(req.params.id);
+  if (!data) {
+    return res.status(404).json({ error: "hybrid unified run not found", id: req.params.id });
+  }
+  res.json(data);
+});
+
 app.get("/api/smoke", async (_req, res) => {
   try {
     const r = await fetch(`${DASHBOARD_URL}/api/state`, { signal: AbortSignal.timeout(3000) });
@@ -278,6 +333,7 @@ if (process.argv[1]?.endsWith("server.js")) {
     console.log(`valhalla-transformer API http://127.0.0.1:${PORT}`);
     console.log(`  GET  /api/health /api/experiments /api/bodies /api/progress`);
     console.log(`  GET  /api/fair-benchmark /api/fair-benchmark/:id`);
+    console.log(`  GET  /api/hybrid-unified /api/hybrid-unified/:id`);
     console.log(`  GET  /api/tile-stemcell-cycles /api/tile-stemcell-cycles/:id`);
   });
 }

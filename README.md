@@ -6,8 +6,8 @@
 
 | | |
 |--|--|
-| **Version** | 1.8 (VPB potential benchmark · Fair · Tile/Stem cycles) |
-| **Date** | 2026-06-20 |
+| **Version** | **2.0** (Hybrid unified product hybrid-2.0 · fair-1.2 · hub-f64 1.1.0) |
+| **Date** | 2026-06-22 |
 | **Main codebase** | [Rogue-Intelligence-INC/Valhalla](https://github.com/Rogue-Intelligence-INC/Valhalla) (proprietary) |
 | **License** | **Proprietary — NOT open source** · [NON_OPEN_SOURCE.md](./NON_OPEN_SOURCE.md) · [LICENSE](./LICENSE) |
 | **Scope** | 文档 + 实验 JSON + 演示 API/Viz · **不含** Val-OS 硬件调度接口 |
@@ -31,7 +31,9 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 
 **Fair Benchmark** Viz tab: `experiments/fair_benchmark_*.json` via `/api/fair-benchmark`.
 
-**VPB Potential**: `experiments/vpb_forecast_latest.json` · PFI **0.81** · hybrid **77.2%** vs TF 71%
+**Hybrid unified (hybrid-2.0)**: `experiments/hybrid_unified_latest.json` · **80.0%** test · open **95.1%** · mcq **54.4%** · `/api/hybrid-unified`
+
+**VPB Potential**: `experiments/vpb_forecast_latest.json` · PFI **0.81**
 
 ---
 
@@ -46,6 +48,8 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 | **10** | [**10_FAIR_BENCHMARK_SPEC.md**](./zh/10_FAIR_BENCHMARK_SPEC.md) | 公正 benchmark 协议 (fair-1.1) |
 | **11** | [**11_TILE_STEMCELL_CYCLE_EXPERIMENT.md**](./zh/11_TILE_STEMCELL_CYCLE_EXPERIMENT.md) | Tile/Stem 多轮 cycle（145Q test） |
 | **12** | [**12_VPB_POTENTIAL_BENCHMARK.md**](./zh/12_VPB_POTENTIAL_BENCHMARK.md) | VPB 潜力 benchmark（PFI 0.81 · hybrid 77%） |
+| **13** | [**13_HYBRID_UNIFIED_PRODUCT.md**](./zh/13_HYBRID_UNIFIED_PRODUCT.md) | **Hybrid 统一产品 hybrid-2.0**（80% · open 95% · mcq 54%） |
+| **14** | [**14_MCQ_FAIR_BENCHMARK_SUMMARY.md**](./zh/14_MCQ_FAIR_BENCHMARK_SUMMARY.md) | MCQ 实验与公平基准总结（中英） |
 | **7** | [**07_TILE_STEMCELL_HARD_EXPERIMENT.md**](./zh/07_TILE_STEMCELL_HARD_EXPERIMENT.md) | Tile/Stem 79 题高难度 |
 
 ## English
@@ -59,7 +63,22 @@ Set `VALHALLA_NATIVE_QA=/path/to/valhalla_native_qa` for live Tier B QA (otherwi
 | **10** | [**10_FAIR_BENCHMARK_SPEC.md**](./en/10_FAIR_BENCHMARK_SPEC.md) |
 | **11** | [**11_TILE_STEMCELL_CYCLE_EXPERIMENT.md**](./en/11_TILE_STEMCELL_CYCLE_EXPERIMENT.md) |
 | **12** | [**12_VPB_POTENTIAL_BENCHMARK.md**](./en/12_VPB_POTENTIAL_BENCHMARK.md) |
+| **13** | [**13_HYBRID_UNIFIED_PRODUCT.md**](./en/13_HYBRID_UNIFIED_PRODUCT.md) |
+| **14** | [**14_MCQ_FAIR_BENCHMARK_SUMMARY.md**](./en/14_MCQ_FAIR_BENCHMARK_SUMMARY.md) |
 | **7** | [**07_TILE_STEMCELL_HARD_EXPERIMENT.md**](./en/07_TILE_STEMCELL_HARD_EXPERIMENT.md) |
+
+---
+
+## Core conclusion（Hybrid unified · hybrid-2.0 · 20260622）
+
+| Metric | Hybrid unified (145Q test) |
+|--------|--------------------------|
+| **Total** | **80.0%** (116/145) |
+| open | **95.1%** |
+| mcq | **54.4%** (~25/46) |
+| numeric | **86.8%** |
+
+**Policy**: open → patch LM · mcq → best(Tile+Fate, Triad) · numeric → max(all). 详见 [13_HYBRID_UNIFIED_PRODUCT.md](./zh/13_HYBRID_UNIFIED_PRODUCT.md)。
 
 ---
 

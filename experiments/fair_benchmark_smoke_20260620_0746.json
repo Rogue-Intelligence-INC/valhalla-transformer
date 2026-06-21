@@ -1,0 +1,4407 @@
+{
+  "meta": {
+    "benchmark": "valhalla_fair",
+    "version": "fair-1.0",
+    "phase": "smoke",
+    "split": "smoke",
+    "corpus_tier": "ingest_clean",
+    "corpus_lines": 49,
+    "corpus_clean": true,
+    "prompt_count": 12,
+    "timestamp": "20260620_0746",
+    "paired_ci": false,
+    "with_memory": true,
+    "with_patch": false,
+    "with_transformer": false
+  },
+  "results": [
+    {
+      "arm": "baseline_no_corpus",
+      "track": "memory_tier_b",
+      "id": "baseline_no_corpus",
+      "body": "triad",
+      "cycles": 1,
+      "use_corpus": false,
+      "session": "isolated",
+      "summary": {
+        "n": 12,
+        "correct": 9,
+        "acc": 0.75,
+        "by_score_type": {
+          "mcq": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "numeric": {
+            "correct": 8,
+            "total": 8,
+            "acc": 1.0
+          }
+        },
+        "by_decode_path": {
+          "direct_math": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "mcq_option": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "word_problem": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          }
+        },
+        "by_domain": {
+          "chemistry": {
+            "correct": 0,
+            "total": 2,
+            "acc": 0.0
+          },
+          "math_numeric": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "math_word": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "physics": {
+            "correct": 1,
+            "total": 2,
+            "acc": 0.5
+          }
+        },
+        "retrieval": {
+          "recall_at_3": 1.0,
+          "mrr_mean": 0.9028
+        }
+      },
+      "rows": [
+        {
+          "id": "GSM_01",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "72",
+            "reference": "72"
+          },
+          "native_answer": "72",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "72",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-47",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.02",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 15,
+            "stem_cells": 124,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "GSM_02",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-13",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 14,
+            "stem_cells": 124,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "GSM_03",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-1",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 10,
+            "stem_cells": 121,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "GSM_04",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "28",
+            "reference": "28"
+          },
+          "native_answer": "28",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "28",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-18",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-9",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 9,
+            "stem_cells": 118,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "MATH_01",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "391",
+            "reference": "391"
+          },
+          "native_answer": "391",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "391",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-22",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-6",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 7,
+            "stem_cells": 115,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "MATH_02",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "12",
+            "reference": "12"
+          },
+          "native_answer": "12",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "12",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-132",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-11",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 6,
+            "stem_cells": 114,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "MATH_03",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "9",
+            "reference": "9"
+          },
+          "native_answer": "9",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "9",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-80",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.01",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 6,
+            "stem_cells": 112,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "MATH_04",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "27",
+            "reference": "27"
+          },
+          "native_answer": "27",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "27",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-41",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-27",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 6,
+            "stem_cells": 112,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "MCQ_PHYS_01",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": true,
+          "score": {
+            "score_type": "mcq",
+            "correct": true,
+            "extracted": "B",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: B",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "B (score=3.1641)",
+              "score": 3.164125620640068,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=3.1641)",
+              "score": 3.164125620640068,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=3.1550)",
+              "score": 3.1550431717259095,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 10,
+            "stem_cells": 120,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "MCQ_PHYS_02",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.3333,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "D (score=3.5963)",
+              "score": 3.5963495396668494,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=3.4766)",
+              "score": 3.476581878988139,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=3.4766)",
+              "score": 3.476581878988139,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 11,
+            "stem_cells": 122,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "MCQ_CHEM_01",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "A",
+            "reference": "C",
+            "strict": true
+          },
+          "native_answer": "ANSWER: A",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "A (score=3.1023)",
+              "score": 3.10228130235815,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=3.1023)",
+              "score": 3.10228130235815,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=3.1023)",
+              "score": 3.10228130235815,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 11,
+            "stem_cells": 121,
+            "memory_items": 1
+          }
+        },
+        {
+          "id": "MCQ_CHEM_02",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "A",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: A",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.5,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "A (score=3.0868)",
+              "score": 3.0868190136434563,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=3.0868)",
+              "score": 3.0868190136434563,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=3.0677)",
+              "score": 3.0676780945589077,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 9,
+            "stem_cells": 118,
+            "memory_items": 1
+          }
+        }
+      ]
+    },
+    {
+      "arm": "hub_c1",
+      "track": "memory_tier_b",
+      "id": "hub_c1",
+      "body": "hub",
+      "cycles": 1,
+      "use_corpus": true,
+      "session": "isolated",
+      "summary": {
+        "n": 12,
+        "correct": 9,
+        "acc": 0.75,
+        "by_score_type": {
+          "mcq": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "numeric": {
+            "correct": 8,
+            "total": 8,
+            "acc": 1.0
+          }
+        },
+        "by_decode_path": {
+          "direct_math": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "mcq_option": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "word_problem": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          }
+        },
+        "by_domain": {
+          "chemistry": {
+            "correct": 0,
+            "total": 2,
+            "acc": 0.0
+          },
+          "math_numeric": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "math_word": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "physics": {
+            "correct": 1,
+            "total": 2,
+            "acc": 0.5
+          }
+        },
+        "retrieval": {
+          "recall_at_3": 1.0,
+          "mrr_mean": 0.9028
+        }
+      },
+      "rows": [
+        {
+          "id": "GSM_01",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "72",
+            "reference": "72"
+          },
+          "native_answer": "72",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "72",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-47",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.02",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_02",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-13",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_03",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-1",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_04",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "28",
+            "reference": "28"
+          },
+          "native_answer": "28",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "28",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-18",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-9",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_01",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "391",
+            "reference": "391"
+          },
+          "native_answer": "391",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "391",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-22",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-6",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_02",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "12",
+            "reference": "12"
+          },
+          "native_answer": "12",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "12",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-132",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-11",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_03",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "9",
+            "reference": "9"
+          },
+          "native_answer": "9",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "9",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-80",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.01",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_04",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "27",
+            "reference": "27"
+          },
+          "native_answer": "27",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "27",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-41",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-27",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_PHYS_01",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": true,
+          "score": {
+            "score_type": "mcq",
+            "correct": true,
+            "extracted": "B",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: B",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "B (score=13.8522)",
+              "score": 13.852213361458919,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=13.2050)",
+              "score": 13.204999738334166,
+              "source": "mcq_option"
+            },
+            {
+              "text": "C (score=13.2050)",
+              "score": 13.204999738334166,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_PHYS_02",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.3333,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "D (score=13.1922)",
+              "score": 13.192213288183018,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=13.0732)",
+              "score": 13.073248009923162,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=13.0732)",
+              "score": 13.073248009923162,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_CHEM_01",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "C",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "D (score=13.0622)",
+              "score": 13.062213363109027,
+              "source": "mcq_option"
+            },
+            {
+              "text": "C (score=13.0232)",
+              "score": 13.02324807832094,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=12.7122)",
+              "score": 12.712213363109027,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_CHEM_02",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "A",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: A",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.5,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "A (score=12.7650)",
+              "score": 12.764999686056935,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=12.7650)",
+              "score": 12.764999686056935,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=12.7650)",
+              "score": 12.764999646534065,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        }
+      ]
+    },
+    {
+      "arm": "tile_c1",
+      "track": "memory_tier_b",
+      "id": "tile_c1",
+      "body": "tile",
+      "cycles": 1,
+      "use_corpus": true,
+      "session": "isolated",
+      "summary": {
+        "n": 12,
+        "correct": 9,
+        "acc": 0.75,
+        "by_score_type": {
+          "mcq": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "numeric": {
+            "correct": 8,
+            "total": 8,
+            "acc": 1.0
+          }
+        },
+        "by_decode_path": {
+          "direct_math": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "mcq_option": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "word_problem": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          }
+        },
+        "by_domain": {
+          "chemistry": {
+            "correct": 0,
+            "total": 2,
+            "acc": 0.0
+          },
+          "math_numeric": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "math_word": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "physics": {
+            "correct": 1,
+            "total": 2,
+            "acc": 0.5
+          }
+        },
+        "retrieval": {
+          "recall_at_3": 1.0,
+          "mrr_mean": 0.9028
+        }
+      },
+      "rows": [
+        {
+          "id": "GSM_01",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "72",
+            "reference": "72"
+          },
+          "native_answer": "72",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "72",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-47",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.02",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 193,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_02",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-13",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 192,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_03",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-1",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 188,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_04",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "28",
+            "reference": "28"
+          },
+          "native_answer": "28",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "28",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-18",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-9",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 186,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_01",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "391",
+            "reference": "391"
+          },
+          "native_answer": "391",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "391",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-22",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-6",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 185,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_02",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "12",
+            "reference": "12"
+          },
+          "native_answer": "12",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "12",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-132",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-11",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 184,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_03",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "9",
+            "reference": "9"
+          },
+          "native_answer": "9",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "9",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-80",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.01",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 184,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_04",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "27",
+            "reference": "27"
+          },
+          "native_answer": "27",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "27",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-41",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-27",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 184,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_PHYS_01",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": true,
+          "score": {
+            "score_type": "mcq",
+            "correct": true,
+            "extracted": "B",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: B",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "B (score=13.9954)",
+              "score": 13.995353151738964,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=13.2954)",
+              "score": 13.295353151738965,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=13.2616)",
+              "score": 13.261608207711497,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 188,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_PHYS_02",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.3333,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "D (score=13.3354)",
+              "score": 13.335353151738968,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=13.2216)",
+              "score": 13.2216082077115,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=13.2216)",
+              "score": 13.2216082077115,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 189,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_CHEM_01",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "C",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "D (score=13.2054)",
+              "score": 13.205353151738967,
+              "source": "mcq_option"
+            },
+            {
+              "text": "C (score=13.1716)",
+              "score": 13.171608207711499,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=12.8554)",
+              "score": 12.855353151738967,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 188,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_CHEM_02",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "A",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: A",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.5,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "A (score=12.8687)",
+              "score": 12.868711733692498,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=12.8687)",
+              "score": 12.868711733692498,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=12.8216)",
+              "score": 12.821608207711499,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 186,
+            "stem_cells": 0,
+            "memory_items": 50
+          }
+        }
+      ]
+    },
+    {
+      "arm": "stemcell_c1",
+      "track": "memory_tier_b",
+      "id": "stemcell_c1",
+      "body": "stemcell",
+      "cycles": 1,
+      "use_corpus": true,
+      "session": "isolated",
+      "summary": {
+        "n": 12,
+        "correct": 9,
+        "acc": 0.75,
+        "by_score_type": {
+          "mcq": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "numeric": {
+            "correct": 8,
+            "total": 8,
+            "acc": 1.0
+          }
+        },
+        "by_decode_path": {
+          "direct_math": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "mcq_option": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "word_problem": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          }
+        },
+        "by_domain": {
+          "chemistry": {
+            "correct": 0,
+            "total": 2,
+            "acc": 0.0
+          },
+          "math_numeric": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "math_word": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "physics": {
+            "correct": 1,
+            "total": 2,
+            "acc": 0.5
+          }
+        },
+        "retrieval": {
+          "recall_at_3": 1.0,
+          "mrr_mean": 0.9028
+        }
+      },
+      "rows": [
+        {
+          "id": "GSM_01",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "72",
+            "reference": "72"
+          },
+          "native_answer": "72",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "72",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-47",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.02",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 293,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_02",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-13",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 293,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_03",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-1",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 288,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_04",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "28",
+            "reference": "28"
+          },
+          "native_answer": "28",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "28",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-18",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-9",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 287,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_01",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "391",
+            "reference": "391"
+          },
+          "native_answer": "391",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "391",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-22",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-6",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 285,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_02",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "12",
+            "reference": "12"
+          },
+          "native_answer": "12",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "12",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-132",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-11",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 284,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_03",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "9",
+            "reference": "9"
+          },
+          "native_answer": "9",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "9",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-80",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.01",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 284,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_04",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "27",
+            "reference": "27"
+          },
+          "native_answer": "27",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "27",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-41",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-27",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 284,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_PHYS_01",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": true,
+          "score": {
+            "score_type": "mcq",
+            "correct": true,
+            "extracted": "B",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: B",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "B (score=14.0394)",
+              "score": 14.039378247229697,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=13.3394)",
+              "score": 13.339378247229698,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=13.3056)",
+              "score": 13.305633303202232,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 288,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_PHYS_02",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.3333,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "D (score=13.3794)",
+              "score": 13.379379657128684,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=13.2656)",
+              "score": 13.265634713101218,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=13.2656)",
+              "score": 13.265634713101218,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 289,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_CHEM_01",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "C",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "D (score=13.2494)",
+              "score": 13.249379657128683,
+              "source": "mcq_option"
+            },
+            {
+              "text": "C (score=13.2156)",
+              "score": 13.215634713101217,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=12.8994)",
+              "score": 12.899379657128684,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 289,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_CHEM_02",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "A",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: A",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.5,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "A (score=12.9203)",
+              "score": 12.92032678334876,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=12.9203)",
+              "score": 12.92032678334876,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=12.8656)",
+              "score": 12.86563188347817,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 0,
+            "stem_cells": 287,
+            "memory_items": 50
+          }
+        }
+      ]
+    },
+    {
+      "arm": "triad_c1",
+      "track": "memory_tier_b",
+      "id": "triad_c1",
+      "body": "triad",
+      "cycles": 1,
+      "use_corpus": true,
+      "session": "isolated",
+      "summary": {
+        "n": 12,
+        "correct": 9,
+        "acc": 0.75,
+        "by_score_type": {
+          "mcq": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "numeric": {
+            "correct": 8,
+            "total": 8,
+            "acc": 1.0
+          }
+        },
+        "by_decode_path": {
+          "direct_math": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "mcq_option": {
+            "correct": 1,
+            "total": 4,
+            "acc": 0.25
+          },
+          "word_problem": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          }
+        },
+        "by_domain": {
+          "chemistry": {
+            "correct": 0,
+            "total": 2,
+            "acc": 0.0
+          },
+          "math_numeric": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "math_word": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "physics": {
+            "correct": 1,
+            "total": 2,
+            "acc": 0.5
+          }
+        },
+        "retrieval": {
+          "recall_at_3": 1.0,
+          "mrr_mean": 0.9028
+        }
+      },
+      "rows": [
+        {
+          "id": "GSM_01",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "72",
+            "reference": "72"
+          },
+          "native_answer": "72",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "72",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-47",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.02",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 193,
+            "stem_cells": 293,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_02",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-13",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 192,
+            "stem_cells": 293,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_03",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "18",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-2",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-1",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 188,
+            "stem_cells": 288,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "GSM_04",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "28",
+            "reference": "28"
+          },
+          "native_answer": "28",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "28",
+              "score": 95.0,
+              "source": "word_problem"
+            },
+            {
+              "text": "-18",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-9",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 186,
+            "stem_cells": 287,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_01",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "391",
+            "reference": "391"
+          },
+          "native_answer": "391",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "391",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-22",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-6",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 185,
+            "stem_cells": 285,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_02",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "12",
+            "reference": "12"
+          },
+          "native_answer": "12",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "12",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-132",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-11",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 184,
+            "stem_cells": 284,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_03",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "9",
+            "reference": "9"
+          },
+          "native_answer": "9",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "9",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-80",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "0.01",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 184,
+            "stem_cells": 284,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MATH_04",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "27",
+            "reference": "27"
+          },
+          "native_answer": "27",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "27",
+              "score": 100.0,
+              "source": "direct_math"
+            },
+            {
+              "text": "-41",
+              "score": 40.0,
+              "source": "cortex"
+            },
+            {
+              "text": "-27",
+              "score": 40.0,
+              "source": "cortex"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 184,
+            "stem_cells": 284,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_PHYS_01",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": true,
+          "score": {
+            "score_type": "mcq",
+            "correct": true,
+            "extracted": "B",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: B",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "B (score=14.2892)",
+              "score": 14.289171493615761,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=13.5892)",
+              "score": 13.589171493615762,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=13.5713)",
+              "score": 13.571343370627321,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 188,
+            "stem_cells": 288,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_PHYS_02",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.3333,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "D (score=13.6290)",
+              "score": 13.628968352863675,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=13.5112)",
+              "score": 13.511166455941506,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=13.5112)",
+              "score": 13.511166455941506,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 189,
+            "stem_cells": 289,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_CHEM_01",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "C",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 1.0,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "D (score=13.4991)",
+              "score": 13.499098298556888,
+              "source": "mcq_option"
+            },
+            {
+              "text": "C (score=13.4613)",
+              "score": 13.461293786477992,
+              "source": "mcq_option"
+            },
+            {
+              "text": "A (score=13.1491)",
+              "score": 13.149098298556888,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 188,
+            "stem_cells": 289,
+            "memory_items": 50
+          }
+        },
+        {
+          "id": "MCQ_CHEM_02",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "A",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: A",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": true,
+            "mrr": 0.5,
+            "top_hits": [
+              {
+                "rank": 1,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              },
+              {
+                "rank": 2,
+                "ref_hit": true,
+                "kw_hit": true,
+                "any_hit": true
+              },
+              {
+                "rank": 3,
+                "ref_hit": false,
+                "kw_hit": false,
+                "any_hit": false
+              }
+            ]
+          },
+          "top_matches": [
+            {
+              "text": "A (score=13.1522)",
+              "score": 13.152199249909502,
+              "source": "mcq_option"
+            },
+            {
+              "text": "B (score=13.1522)",
+              "score": 13.152199249909502,
+              "source": "mcq_option"
+            },
+            {
+              "text": "D (score=13.1311)",
+              "score": 13.131129341373383,
+              "source": "mcq_option"
+            }
+          ],
+          "session": "isolated",
+          "structure": {
+            "tile_count": 186,
+            "stem_cells": 287,
+            "memory_items": 50
+          }
+        }
+      ]
+    },
+    {
+      "arm": "triad_c1_persistent",
+      "track": "memory_tier_b",
+      "id": "triad_c1_persistent",
+      "body": "triad",
+      "cycles": 1,
+      "use_corpus": true,
+      "session": "persistent",
+      "incubation_cycles": 1,
+      "qa_cycles": 1,
+      "summary": {
+        "n": 12,
+        "correct": 10,
+        "acc": 0.8333,
+        "by_score_type": {
+          "mcq": {
+            "correct": 2,
+            "total": 4,
+            "acc": 0.5
+          },
+          "numeric": {
+            "correct": 8,
+            "total": 8,
+            "acc": 1.0
+          }
+        },
+        "by_decode_path": {
+          "direct_math": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "mcq_option": {
+            "correct": 2,
+            "total": 4,
+            "acc": 0.5
+          },
+          "word_problem": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          }
+        },
+        "by_domain": {
+          "chemistry": {
+            "correct": 1,
+            "total": 2,
+            "acc": 0.5
+          },
+          "math_numeric": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "math_word": {
+            "correct": 4,
+            "total": 4,
+            "acc": 1.0
+          },
+          "physics": {
+            "correct": 1,
+            "total": 2,
+            "acc": 0.5
+          }
+        },
+        "retrieval": {
+          "recall_at_3": 0.0,
+          "mrr_mean": 0.0
+        }
+      },
+      "rows": [
+        {
+          "id": "GSM_01",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "72",
+            "reference": "72"
+          },
+          "native_answer": "72",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 11,
+            "stem_cells": 158
+          }
+        },
+        {
+          "id": "GSM_02",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 11,
+            "stem_cells": 160
+          }
+        },
+        {
+          "id": "GSM_03",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "18",
+            "reference": "18"
+          },
+          "native_answer": "18",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 13,
+            "stem_cells": 159
+          }
+        },
+        {
+          "id": "GSM_04",
+          "domain": "math_word",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "28",
+            "reference": "28"
+          },
+          "native_answer": "28",
+          "decode_path": "word_problem",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 11,
+            "stem_cells": 158
+          }
+        },
+        {
+          "id": "MATH_01",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "391",
+            "reference": "391"
+          },
+          "native_answer": "391",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 11,
+            "stem_cells": 157
+          }
+        },
+        {
+          "id": "MATH_02",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "12",
+            "reference": "12"
+          },
+          "native_answer": "12",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 13,
+            "stem_cells": 159
+          }
+        },
+        {
+          "id": "MATH_03",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "9",
+            "reference": "9"
+          },
+          "native_answer": "9",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 13,
+            "stem_cells": 159
+          }
+        },
+        {
+          "id": "MATH_04",
+          "domain": "math_numeric",
+          "score_type": "numeric",
+          "correct": true,
+          "score": {
+            "score_type": "numeric",
+            "correct": true,
+            "extracted": "27",
+            "reference": "27"
+          },
+          "native_answer": "27",
+          "decode_path": "direct_math",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 12,
+            "stem_cells": 158
+          }
+        },
+        {
+          "id": "MCQ_PHYS_01",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": true,
+          "score": {
+            "score_type": "mcq",
+            "correct": true,
+            "extracted": "B",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: B",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 11,
+            "stem_cells": 160
+          }
+        },
+        {
+          "id": "MCQ_PHYS_02",
+          "domain": "physics",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "D",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: D",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 10,
+            "stem_cells": 159
+          }
+        },
+        {
+          "id": "MCQ_CHEM_01",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": true,
+          "score": {
+            "score_type": "mcq",
+            "correct": true,
+            "extracted": "C",
+            "reference": "C",
+            "strict": true
+          },
+          "native_answer": "ANSWER: C",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 11,
+            "stem_cells": 158
+          }
+        },
+        {
+          "id": "MCQ_CHEM_02",
+          "domain": "chemistry",
+          "score_type": "mcq",
+          "correct": false,
+          "score": {
+            "score_type": "mcq",
+            "correct": false,
+            "extracted": "A",
+            "reference": "B",
+            "strict": true
+          },
+          "native_answer": "ANSWER: A",
+          "decode_path": "mcq_option",
+          "retrieval": {
+            "recall_at_k": false,
+            "mrr": 0.0
+          },
+          "session": "persistent",
+          "structure": {
+            "tile_count": 10,
+            "stem_cells": 158
+          }
+        }
+      ]
+    }
+  ]
+}

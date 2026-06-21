@@ -51,6 +51,24 @@ describe("valhalla-transformer API", () => {
     assert.ok(body.regression.length > 0);
   });
 
+  it("GET /api/fair-benchmark", async () => {
+    const { status, body } = await httpGet(port, "/api/fair-benchmark");
+    assert.equal(status, 200);
+    assert.ok(Array.isArray(body.runs));
+  });
+
+  it("GET /api/hybrid-unified", async () => {
+    const { status, body } = await httpGet(port, "/api/hybrid-unified");
+    assert.equal(status, 200);
+    assert.ok(Array.isArray(body.runs));
+  });
+
+  it("GET /api/hybrid-unified/latest", async () => {
+    const { status, body } = await httpGet(port, "/api/hybrid-unified/latest");
+    assert.equal(status, 200);
+    assert.ok(body.summary?.hybrid);
+  });
+
   it("teardown", () => {
     server.close();
   });
