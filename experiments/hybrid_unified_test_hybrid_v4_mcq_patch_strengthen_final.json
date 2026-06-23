@@ -9237,9 +9237,9 @@
       "decode_path": "patch_pipeline_v4_mcq/patch_mcq_affinity_weak",
       "mcq_patch_subtag": "patch_mcq_affinity_weak",
       "mcq_patch_confidence": 0.55,
-      "mcq_fate_spread": 4.1945701357459786e-05,
+      "mcq_fate_spread": 0.000041945701357459786,
       "mcq_fate_letter": "C",
-      "mcq_affinity_spread": 4.1945701357459786e-05
+      "mcq_affinity_spread": 0.000041945701357459786
     },
     {
       "id": "MCQ_GEO_01",
@@ -9930,9 +9930,9 @@
       "decode_path": "patch_pipeline_v4_mcq/patch_mcq_gen_solo",
       "mcq_patch_subtag": "patch_mcq_gen_solo",
       "mcq_patch_confidence": 1.0,
-      "mcq_fate_spread": 6.935009057851271e-07,
+      "mcq_fate_spread": 6.935009057851271e-7,
       "mcq_fate_letter": "A",
-      "mcq_affinity_spread": 6.935009057851271e-07
+      "mcq_affinity_spread": 6.935009057851271e-7
     },
     {
       "id": "MCQ_F07",
@@ -10117,9 +10117,9 @@
       "decode_path": "patch_pipeline_v4_mcq/patch_mcq_gen_solo",
       "mcq_patch_subtag": "patch_mcq_gen_solo",
       "mcq_patch_confidence": 1.55,
-      "mcq_fate_spread": 6.72619047619033e-05,
+      "mcq_fate_spread": 0.0000672619047619033,
       "mcq_fate_letter": "B",
-      "mcq_affinity_spread": 6.72619047619033e-05
+      "mcq_affinity_spread": 0.0000672619047619033
     },
     {
       "id": "MCQ_F27",
@@ -10150,9 +10150,9 @@
       "decode_path": "patch_pipeline_v4_mcq/patch_mcq_gen_solo",
       "mcq_patch_subtag": "patch_mcq_gen_solo",
       "mcq_patch_confidence": 1.0,
-      "mcq_fate_spread": 1.8283055409684668e-05,
+      "mcq_fate_spread": 0.000018283055409684668,
       "mcq_fate_letter": "B",
-      "mcq_affinity_spread": 1.8283055409684668e-05
+      "mcq_affinity_spread": 0.000018283055409684668
     },
     {
       "id": "MCQ_F30",
@@ -10205,9 +10205,9 @@
       "decode_path": "patch_pipeline_v4_mcq/patch_mcq_gen_solo",
       "mcq_patch_subtag": "patch_mcq_gen_solo",
       "mcq_patch_confidence": 1.0,
-      "mcq_fate_spread": 6.0000000000004494e-05,
+      "mcq_fate_spread": 0.000060000000000004494,
       "mcq_fate_letter": "B",
-      "mcq_affinity_spread": 6.0000000000004494e-05
+      "mcq_affinity_spread": 0.000060000000000004494
     },
     {
       "id": "MCQ_F38",
@@ -10249,9 +10249,9 @@
       "decode_path": "patch_pipeline_v4_mcq/patch_mcq_gen_solo",
       "mcq_patch_subtag": "patch_mcq_gen_solo",
       "mcq_patch_confidence": 1.0,
-      "mcq_fate_spread": 1.3282828282834558e-05,
+      "mcq_fate_spread": 0.000013282828282834558,
       "mcq_fate_letter": "D",
-      "mcq_affinity_spread": 1.3282828282834558e-05
+      "mcq_affinity_spread": 0.000013282828282834558
     },
     {
       "id": "MCQ_F44",
@@ -10326,9 +10326,9 @@
       "decode_path": "patch_pipeline_v4_mcq/patch_mcq_gen_solo",
       "mcq_patch_subtag": "patch_mcq_gen_solo",
       "mcq_patch_confidence": 1.0,
-      "mcq_fate_spread": 9.983600305110696e-05,
+      "mcq_fate_spread": 0.00009983600305110696,
       "mcq_fate_letter": "C",
-      "mcq_affinity_spread": 9.983600305110696e-05
+      "mcq_affinity_spread": 0.00009983600305110696
     },
     {
       "id": "OPEN_F02",
@@ -10941,8 +10941,5 @@
       "tile_fate_persistent": 23,
       "patch_lm": 122
     }
-  },
-  "meta": {
-    "source_file": "hybrid_v4_mcq_patch_strengthen_final.json"
   }
 }

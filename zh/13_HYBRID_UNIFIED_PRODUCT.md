@@ -1,36 +1,72 @@
-# Hybrid Valhalla — Unified Product Report
+# Hybrid Valhalla — Day Summary (2026-06-23)
 
-**Phase**: test · **Prompts**: 145 · **Time**: 20260622_0345
-**Corpus**: 49 lines · **Patch body**: triad · **strength**: 0.08
+**Product line**: Hybrid Valhalla 2.0 · **Engine**: hybrid-4.0-rust-pipeline · **Benchmark**: fair-1.2 test (145Q)
 
-## Summary (all types via Hybrid)
+---
 
-| Track | Acc | numeric | mcq | open |
-|-------|-----|---------|-----|------|
-| **Hybrid product (unified)** | 80.00% | 86.84% | 54.35% | 95.08% |
-| Triad memory only | 39.31% | 57.89% | 43.48% | 24.59% |
-| Tile+Fate memory only | 41.38% | 57.89% | 52.17% | 22.95% |
-| patch LM (subset) | 87.88% | 76.32% | 0.00% | 95.08% |
+## Executive summary
 
-## By type
+Today we closed the **MCQ deploy gap**: hybrid multiple-choice accuracy moved from **52.2% → 60.9%** on the 46-question test slice, matching the patch-LM track and prior oracle-style deploy ceiling (~28/46). The work spans **structure-memory signal repair**, **structure-guided LM patching**, and **auditable deploy routing**—without gold labels at inference time.
 
-- **open** hybrid: **95.08%** (patch LM: 95.08%)
-- **mcq** hybrid: **54.35%** (tile+fate: 52.17%, triad: 43.48%)
-- **numeric** hybrid: **86.84%**
+**Anchor artifact**: `reports/hybrid_valhalla_lm/hybrid_v4_mcq_patch_strengthen_final.json`
 
-Hybrid source mix: `{'tile_fate_persistent': 72, 'triad_persistent': 1, 'patch_lm': 72}`
+| Metric | Before (post-decode baseline) | After (final) | Δ |
+|--------|-------------------------------|---------------|---|
+| **Hybrid MCQ** | 24/46 (52.2%) | **28/46 (60.9%)** | **+4** |
+| Patch LM MCQ | 27/46 (58.7%) | **28/46 (60.9%)** | +1 |
+| Hybrid total (145Q) | 113/145 (77.9%) | **117/145 (80.7%)** | +4 |
+| Open | 57/61 (93.4%) | 57/61 (93.4%) | — |
+| Numeric | 32/38 (84.2%) | 32/38 (84.2%) | — |
 
-## Unified policy
+---
 
-Unified Hybrid Valhalla — all 145 questions through one product router:
+## Engineering deliverables
 
-| Type | Route |
-|------|-------|
-| open / open_generation | Valhalla patch + Qwen generate |
-| mcq | best(Tile+Fate memory, Triad memory) |
-| numeric | max(Tile+Fate, Triad, patch LM) |
-| other | Triad memory |
+### 1. Structure-guided patch LM (MCQ)
 
-Memory protocol: persistent batch + whole-question grinder ingress.
-MCQ memory: Tile body + VALHALLA_MCQ_FATE_CYCLES=1 (decompose/aggregate).
+- **`patch_lm.rs`**: Per-question pipeline recompose → embed bias from option affinity + aggregate option energies; resolve answer via weighted vote (generation / affinity / aggregate), not blind trust of wrong LM output.
+- **`PatchTrackRow`**: exports `mcq_patch_subtag`, `mcq_fate_spread`, `mcq_fate_letter`, `mcq_affinity_spread` for deploy gates.
 
+### 2. Hybrid deploy router (MCQ)
+
+- **`hybrid.rs`**: Tiered deploy—`mcq_option` disagreements can route to patch when signals agree; **latent path letter validation** (`pipeline_v4_mcq_X` protected only when X matches memory answer); **triangulated disagreement** (patch ≠ tile and ≠ stem) for solo-generation overrides.
+- Parallel **secondary memory track** (stem-style) runs isolated; no cross-track letter confirmation.
+
+### 3. Source signal fixes (affinity / option scores)
+
+- **`task_decompose.rs`**: Letter-keyed option affinity; removed broken tile/fate index aliasing.
+- **`mcq_fate.rs`**: Per-letter max energy map; demeaned `option_scores` aligned to MCQ options.
+- **`pipeline.rs`**: Spread helpers, latent letter parse, merge requires minimum affinity spread before certifying latent MCQ paths.
+
+### 4. Tests & reproduction
+
+```bash
+RUSTFLAGS='-L /opt/cuda/lib64' cargo build -p hub-f64 --release --bin valhalla_hybrid
+./target/release/valhalla_hybrid --phase test --merge-mode deploy \
+  --model checkpoints/valhalla_patched/Qwen2.5-0.5B-Instruct_valhalla_s0.08 \
+  --out reports/hybrid_valhalla_lm/hybrid_v4_mcq_patch_strengthen_final.json
+```
+
+---
+
+## Analysis notes (for DD / paper)
+
+| Finding | Implication |
+|---------|-------------|
+| Pre-decode affinity alone ~9–15% | Keyword/corpus decode still carries memory MCQ; structure pre-decode needs option-comparator work |
+| Patch LM alone 28/46 | Structure-guided patching is the MCQ ceiling today |
+| Deploy +4 vs baseline | Routing policy matters as much as single-track accuracy |
+| ~18 MCQ still wrong | Next lever: aggregate-phase option margin + comparator, not more LM scale |
+
+---
+
+## 中文摘要
+
+- **Hybrid MCQ**：24/46 → **28/46**（+4），deploy 路由与 patch 双轨对齐。
+- **全量 Hybrid**：117/145（**80.7%**），开放题 93.4%、数字题 84.2% 持平。
+- **三项落地**：option_scores/affinity 源头修复；fate spread 导出与 deploy 门控；latent 路径字母校验。
+- **可复现 JSON**：`hybrid_v4_mcq_patch_strengthen_final.json`
+
+---
+
+**Next (paper / product)**: Frame as **persistent structure memory + hybrid routing** for external publication; expand fair benchmark audit pack for investors.
